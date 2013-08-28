@@ -2,13 +2,50 @@
 <html>
 <head>
   <title>Mtsiran</title>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+  <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#">Margaret Tsirantonakis</a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li><%= link_to "New Work" %></li>
+            <li><%= link_to "Paintings" %></li>
+            <li><%= link_to "Watercolors" %></li>
+            <li><%= link_to "Drawings" %></li>
+	        <li><%= link_to "Prints" %></li>
+	        <li><%= link_to "Profile" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
+  <div class="container">
+	<%= yield %>
+  </div> 
 
+	<!--<div class="footer">
+		<a><span>&laquo; Margaret Tsirantonakis </span></a>
+		<span class="right_ab">
+			<a href="http://www.flickr.com/photos/smanography/" target="_blank">Images by Shermeee</a>
+			<a href="http://creativecommons.org/licenses/by/2.0/deed.en_GB">CC BY 2.0</a>
+			<a href="http://tympanus.net/codrops/2011/09/20/responsive-image-gallery/"><strong>back to the Codrops post</strong></a>
+		</span>
+		<div class="clr"></div>
+	</div> footer -->
 </body>
 </html>

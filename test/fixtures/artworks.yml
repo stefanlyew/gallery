@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  album: 
+  title: MyString
+  year: 1
+  type: 
+  medium: MyString
+  size: MyString
+  price: 1
+  notes: MyString
+
+two:
+  album: 
+  title: MyString
+  year: 1
+  type: 
+  medium: MyString
+  size: MyString
+  price: 1
+  notes: MyString
