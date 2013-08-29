@@ -9,7 +9,8 @@
     <%= f.input :size %>
     <%= f.input :medium %>
     <%= f.input :price %>
-  </div>
+    <%= f.association :galleries,   as: :check_boxes %>
+</div>
 
   <div class="actions">
     <%= f.submit %>

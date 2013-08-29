@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mtsiran</title>
+  <title>Tsirantonakis</title>
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="description" content="Online Gallery of Artist Margaret Tsirantonakis">
+  <meta name="keywords" content="nature, art, stamford, margaret, Tsirantonakis, watercolor" />
+  <meta name="author" content="Stefan Lyew">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+  <!-- navbar -->
   <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
       <div class="container">
@@ -36,12 +40,11 @@
       </div>
     </div>
   </div>
+  <!-- end navbar -->
 
   <div class="container">
-<!--      <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p> -->
+      <%= bootstrap_flash %>
       <%= yield %>
-  </div> 
 
 	<!--<div class="footer">
 		<a><span>&laquo; Margaret Tsirantonakis </span></a>
@@ -52,5 +55,6 @@
 		</span>
 		<div class="clr"></div>
 	</div> footer -->
+  </div> 
 </body>
 </html>

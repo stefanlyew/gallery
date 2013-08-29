@@ -25,6 +25,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/new.json
   def new
     @gallery = Gallery.new
+    @all_artworks = Artwork.all
+    @current_artworks = @gallery.artworks
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/1/edit
   def edit
     @gallery = Gallery.find(params[:id])
+    @all_artworks = Artwork.all
+    @current_artworks = @gallery.artworks
   end
 
   # POST /galleries

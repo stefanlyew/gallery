@@ -19,7 +19,15 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+  <h2>Select What Art Pieces You Want in this Gallery</h2>
+  <% @all_artworks.each do |artwork| %>
+   <div class="well">
+      <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+      <%= label_tag :artwork_ids, artwork.title -%>      
+    </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
