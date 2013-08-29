@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Bootstrap Gallery</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <%= stylesheet_link_tag "main" %> 
+        <link href='http://fonts.googleapis.com/css?family=Yesteryear' rel='stylesheet' type='text/css'>
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
+
+        <div class="container gallery">
+            <h2 class="page-title">Art Gallery</h2>
+
+
+            <ul class="thumbnails">
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/1.jpg" title="You can add caption to pictures.">
+                        <%= image_tag "prettyphoto/pics/1.jpg", class: "group1", alt: "This is the title." %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/2.jpg" title: "image01">
+                        <%= image_tag "prettyphoto/pics/2.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/3.jpg">
+                        <%= image_tag "prettyphoto/pics/3.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/4.jpg">
+                        <%= image_tag "prettyphoto/pics/4.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/5.jpg">
+                        <%= image_tag "prettyphoto/pics/5.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/6.jpg">
+                        <%= image_tag "prettyphoto/pics/6.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/7.jpg">
+                        <%= image_tag "prettyphoto/pics/7.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/8.jpg">
+                        <%= image_tag "prettyphoto/pics/8.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+            </ul><!--end thumbnails -->
+
+
+
+            <footer>
+                <p>&copy; Tsiranktonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
+            </footer>
+
+        </div> <!-- /container -->
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+    <%= javascript_include_tag "prettyPhoto/plugins.js" %>
+    <%= javascript_include_tag "prettyPhoto/jquery.prettyPhoto.js" %>
+    <%= javascript_include_tag "prettyPhoto/main.js" %>
+
+
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+
+            // Colorbox Call
+
+            $(document).ready(function(){
+                $("[rel^='lightbox']").prettyPhoto();
+            });
+        </script>
+    </body>
+</html>
