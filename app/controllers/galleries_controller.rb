@@ -44,6 +44,7 @@ class GalleriesController < ApplicationController
   # POST /galleries
   # POST /galleries.json
   def create
+    params[:gallery][:artwork_ids] ||= [] 
     @gallery = Gallery.new(params[:gallery])
 
     respond_to do |format|
@@ -60,6 +61,7 @@ class GalleriesController < ApplicationController
   # PUT /galleries/1
   # PUT /galleries/1.json
   def update
+    params[:gallery][:artwork_ids] ||= [] 
     @gallery = Gallery.find(params[:id])
 
     respond_to do |format|

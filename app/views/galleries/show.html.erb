@@ -9,7 +9,10 @@
   <b>Description:</b>
   <%= @gallery.description %>
 </p>
-
+<h2>Artworks in this gallery</h2>
+  <% @gallery.artworks.each do |artwork| %>
+	<p><%= artwork.title %></p>
+  <% end %>
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>

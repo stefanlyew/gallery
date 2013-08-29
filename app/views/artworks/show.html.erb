@@ -35,6 +35,11 @@
   <%= @artwork.medium %>
 </p>
 
+<h2>Galleries displaying this piece</h2>
+  <% @artwork.galleries.each do |gallery| %>
+  <p><%= gallery.title %></p>
+  <% end %>
+
 
 <%= link_to 'Edit', edit_artwork_path(@artwork) %> |
 <%= link_to 'Back', artworks_path %>
