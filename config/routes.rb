@@ -1,10 +1,6 @@
-Mtsiran::Application.routes.draw do
-  resources :artworks
-
-
-  resources :albums
-
+Mtsiran::Application.routes.draw do  
   root :to => 'welcome#gallery'
-  get '/filter', to: 'welcome#filter'
+  resources :artworks
+  resources :galleries
 
 end

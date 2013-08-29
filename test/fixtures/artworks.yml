@@ -1,21 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  album: 
   title: MyString
-  year: 1
-  type: 
-  medium: MyString
+  year: 2013-08-29
   size: MyString
-  price: 1
-  notes: MyString
+  price: 1.5
+  medium: MyString
 
 two:
-  album: 
   title: MyString
-  year: 1
-  type: 
-  medium: MyString
+  year: 2013-08-29
   size: MyString
-  price: 1
-  notes: MyString
+  price: 1.5
+  medium: MyString

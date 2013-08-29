@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130828202004) do
+ActiveRecord::Schema.define(:version => 20130829202026) do
 
   create_table "albums", :force => true do |t|
     t.string   "title"
@@ -20,23 +20,36 @@ ActiveRecord::Schema.define(:version => 20130828202004) do
   end
 
   create_table "artworks", :force => true do |t|
-    t.integer  "album_id"
     t.string   "title"
-    t.integer  "year"
-    t.string   "type"
-    t.string   "medium"
     t.string   "size"
-    t.integer  "price"
-    t.string   "notes"
+    t.float    "price"
+    t.string   "medium"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "asset_file_name"
     t.string   "asset_content_type"
     t.integer  "asset_file_size"
     t.datetime "asset_updated_at"
+    t.integer  "year"
+    t.string   "category"
   end
 
-  add_index "artworks", ["album_id"], :name => "index_artworks_on_album_id"
+  create_table "curatings", :force => true do |t|
+    t.integer  "gallery_id"
+    t.integer  "artwork_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "curatings", ["artwork_id"], :name => "index_curatings_on_artwork_id"
+  add_index "curatings", ["gallery_id"], :name => "index_curatings_on_gallery_id"
+
+  create_table "galleries", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

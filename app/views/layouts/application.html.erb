@@ -26,8 +26,11 @@
             <li><%= link_to "Paintings" %></li>
             <li><%= link_to "Watercolors" %></li>
             <li><%= link_to "Drawings" %></li>
-	        <li><%= link_to "Prints" %></li>
-	        <li><%= link_to "Profile" %></li>
+	          <li><%= link_to "Prints" %></li>
+	          <li><%= link_to "Profile" %></li>
+            <li><%= link_to "My Catalog", artworks_path %></li>
+            <li><%= link_to "My Galleries", galleries_path %></li>
+            <li><%= link_to "Sign Out" %></li>
           </ul>
         </div>
       </div>
@@ -35,8 +38,8 @@
   </div>
 
   <div class="container">
-     <p class="notice"><%= notice %></p>
-     <p class="alert"><%= alert %></p>
+<!--      <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p> -->
       <%= yield %>
   </div> 
 
