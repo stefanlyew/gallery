@@ -1,18 +1,90 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @gallery.title %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @gallery.description %>
-</p>
-<h2>Artworks in this gallery</h2>
-  <% @gallery.artworks.each do |artwork| %>
-	<p><%= artwork.title %></p>
-  <% end %>
-
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Back', galleries_path %>
+
+        <%= stylesheet_link_tag "main" %> 
+
+        <div class="container gallery">
+            <h2 class="page-title"><%= @gallery.title %></h2>
+
+
+            <ul class="thumbnails">
+				<% @gallery.artworks.each do |artwork| %>
+
+                <li class="span3">
+                	<!-- This was a crazy little string-interpolation puzzle-->
+                    <a class='thumbnail' rel='lightbox[group]' href='../assets/prettyphoto/pics/1.jpg' title='<%= "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}" %>'> 
+                        <%= image_tag "prettyphoto/pics/1.jpg", class: "group1", alt: "" %>
+                    </a>
+                </li>
+                <% end %>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/2.jpg" title: "image01">
+                        <%= image_tag "prettyphoto/pics/2.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/3.jpg">
+                        <%= image_tag "prettyphoto/pics/3.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/4.jpg">
+                        <%= image_tag "prettyphoto/pics/4.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/5.jpg">
+                        <%= image_tag "prettyphoto/pics/5.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/6.jpg">
+                        <%= image_tag "prettyphoto/pics/6.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/7.jpg">
+                        <%= image_tag "prettyphoto/pics/7.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+
+                <li class="span3">
+                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/8.jpg">
+                        <%= image_tag "prettyphoto/pics/8.jpg", class: "group1", title: "image01" %>
+                    </a>
+                </li>
+            </ul><!--end thumbnails -->
+
+
+
+            <footer>
+                <p>&copy; Tsiranktonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
+            </footer>
+
+        </div> <!-- /container -->
+
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <%= javascript_include_tag "prettyPhoto/plugins.js" %>
+        <%= javascript_include_tag "prettyPhoto/jquery.prettyPhoto.js" %>
+        <%= javascript_include_tag "prettyPhoto/main.js" %>
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+
+            // Colorbox Call
+
+            $(document).ready(function(){
+                $("[rel^='lightbox']").prettyPhoto();
+            });
+        </script>

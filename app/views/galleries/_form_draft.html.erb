@@ -1,20 +1,47 @@
-<h2 class="page-title">My Catalog of All Artworks</h2>
-    <%= link_to "<i class=\"icon-picture icon-plus-sign text-success text-right\"></i><i class=\"icon-picture icon-remove text-success text-right\"></i>New Artwork".html_safe, new_artwork_path %>
+<form>
+<%= form_for(@gallery) do |f| %>
+  <!-- ERRORS MESSAGE -->
+  <% if @gallery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
 
+      <ul>
+      <% @gallery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <!-- ERRORS MESSAGE -->
 
-
-    <form>
+        <div class="container">
+              <div class="field pull-right">
+                <%= f.label :title %><br />
+                <%= f.text_field :title %>
+              </div>
+                <div class="field pull-right">
+                <%= f.label :description %><br />
+                <%= f.text_field :description %>
+              </div>
+              <div class="actions">
+                <%= f.submit 'Add Checked Photos to Selected Gallery', :class => 'btn btn-success pull-right' %>
+              </div>
+        </div>
 
         <div class="well"><div id="placeHolder"></div></div>
         <div class="container gallery">
             
             <ul class="thumbnails" id="container">
-                <% @artworks.each do |artwork| %>
+                <h5>Select What Art Pieces You Want in this Gallery</h5>
+
+          
+                <% @all_artworks.each do |artwork| %>
                   <li class="span2" data-category=<%= artwork.category %> data-keyword="Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos" data-medium=<%= artwork.medium %> data-year=<%= artwork.year %>>
                     <div class="thumbnail">
                         <%= link_to image_tag('http://placekitten.com/300/200'), artwork %>
                       <div class="caption">
-                        <h5><%= artwork.title %></h5>
+                        <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+                        <%= label_tag :artwork_ids, artwork.title -%>  
                             <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
                             <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
                       </div>
@@ -23,8 +50,8 @@
                 <% end %>
             </ul>
         </div>      
-    </form>  
-
+<% end %>
+</form>
 <!-- FILTRIFY ================== -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <%= javascript_include_tag "filtrify/script.js" %>
