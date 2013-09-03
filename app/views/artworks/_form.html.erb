@@ -1,18 +1,26 @@
 <%= simple_form_for(@artwork) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+   <fieldset>
     <%= f.input :title %>
-    <%= f.input :asset, as: :file %>
+    <%= f.input :asset, as: :file, :label => "Upload Image" %>
+      <% if f.object.asset? %>
+        <div class="control-group">
+          <label class="control-label">Current Image</label>
+        <div class="controls">
+      <%= image_tag f.object.asset.url %>
+      <% end %>
     <%= f.input :year, collection: 1990..Date.today.year, selected: Date.today.year %>
     <%= f.input :category, collection: [ "Paintings", "Watercolors", "Drawings", "Prints"], selected: "Paintings" %>
     <%= f.input :size %>
     <%= f.input :medium %>
     <%= f.input :price %>
     <%= f.association :galleries,   as: :check_boxes %>
-</div>
+</fieldset>
 
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="form-actions">
+    <%= f.submit "Update", class: 'btn btn-primary' %>
+    <%= link_to "Back", artworks_path, class: 'btn' %>
+    </div>
 <% end %>

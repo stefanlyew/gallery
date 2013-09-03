@@ -10,9 +10,10 @@
             
             <ul class="thumbnails" id="container">
                 <% @artworks.each do |artwork| %>
-                  <li class="span2" data-category=<%= artwork.category %> data-keyword="Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos" data-medium=<%= artwork.medium %> data-year=<%= artwork.year %>>
+                  <li class="span3" data-category=<%= artwork.category %> data-keyword="Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos" data-medium=<%= artwork.medium %> data-year=<%= artwork.year %>>
+<!-- WE NEED A MODEL VALIDATION HERE TO HANDLE WHITESPACE ON MEDIUM-->
                     <div class="thumbnail">
-                        <%= link_to image_tag('http://placekitten.com/300/200'), artwork %>
+                        <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
                       <div class="caption">
                         <h5><%= artwork.title %></h5>
                             <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>

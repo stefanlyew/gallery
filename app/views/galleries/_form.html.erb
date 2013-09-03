@@ -32,16 +32,16 @@
 
         <div class="well"><div id="placeHolder"></div></div>
         <div class="container gallery">
-            
-            <ul class="thumbnails" id="container">
-                <h5>Select What Art Pieces You Want in this Gallery</h5>
 
           
+            <h5>Select What Art Pieces You Want in this Gallery</h5>
+            <ul class="thumbnails" id="container">
                 <% @all_artworks.each do |artwork| %>
-                  <li class="span2" data-category=<%= artwork.category %> data-keyword="Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos" data-medium=<%= artwork.medium %> data-year=<%= artwork.year %>>
+                  <li class="span3" data-category=<%= artwork.category %> data-keyword="Harrison Ford, Rutger Hauer, Sean Young, Edward James Olmos" data-medium="#{artwork.medium}" data-year=<%= artwork.year %>>
                     <div class="thumbnail">
-                        <%= link_to image_tag('http://placekitten.com/300/200'), artwork %>
+                        <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
                       <div class="caption">
+
                         <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
                         <%= label_tag :artwork_ids, artwork.title -%>  
                       </div>
