@@ -1,13 +1,4 @@
 <%= stylesheet_link_tag "main" %> 
-<!-- Jquery UI Sortable -->
-
-  <script>
-  $(function() {
-    $( "#sortable" ).sortable();
-    $( "#sortable" ).disableSelection();
-  });
-  </script>
-<!-- end Jquery UI Sortable -->
 <!-- Pretty Photo Window -->
     <%= javascript_include_tag "prettyPhoto/plugins.js" %>
     <%= javascript_include_tag "prettyPhoto/jquery.prettyPhoto.js" %>
@@ -24,26 +15,13 @@
 
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Galleries', galleries_path %>
-
-
-
-        <ul id="artworks">
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
-  <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
-</ul>
  
+    <div class="container gallery">
+      <h2 class="page-title"><%= @gallery.title %></h2>
 
-        <div class="container gallery">
-            <h2 class="page-title"><%= @gallery.title %></h2>
-
-
-            <ul class="thumbnails" id="sortable">
-        <% @gallery.artworks.each do |artwork| %>
+      <!-- have to make this sortable only if signed in -->
+      <ul class="thumbnails" id="sortable" data-update-url="<%= sort_gallery_path(@gallery) %>"> 
+        <% @artworks.each do |artwork| %>
                   <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
                     <!-- This was a crazy little string-interpolation puzzle-->
                       <a class='thumbnail' rel='lightbox[group]' href=<%= artwork.asset %> title='<%= "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>'> 
@@ -57,7 +35,7 @@
 
 
             <footer>
-                <p>&copy; Tsirantonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
+                <p>&copy; Margaret Tsirantonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
             </footer>
 
         </div> <!-- /container -->

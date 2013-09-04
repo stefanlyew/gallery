@@ -14,6 +14,12 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @gallery = Gallery.find(params[:id])
+    @curatings = Curating.where("gallery_id = ?", 2).order("position").all
+
+    @artworks = []
+    @curatings.each do |curating|
+      @artworks << Artwork.find_by_id(curating.artwork_id)
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -85,5 +91,13 @@ class GalleriesController < ApplicationController
       format.html { redirect_to galleries_url }
       format.json { head :no_content }
     end
+  end
+
+  def sort
+    #curatings = Curating.find_all_by_gallery_id(params[:id])
+    params[:artwork].each_with_index do |id, index|
+      Curating.update_all({position: index+1, gallery_id: params[:id]}, {artwork_id: id})
+    end
+    render nothing: true
   end
 end
