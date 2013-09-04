@@ -5,7 +5,8 @@ gem 'paperclip'
 
 gem 'devise'
 gem 'simple_form'
-
+gem 'acts_as_list'
+#gem 'jquery-ui-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -37,7 +38,7 @@ group :production do
 	gem 'pg'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', "~> 2.3.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
