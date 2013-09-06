@@ -41,9 +41,11 @@
               <li><%= link_to gallery.title, gallery_path(gallery) %></li>
             <% end %>
 	          <li><%= link_to "Profile" %></li>
-            <li><%= link_to "My Catalog", artworks_path %></li>
-            <li><%= link_to "My Galleries", galleries_path %></li>
-            <li><%= link_to "Sign Out" %></li>
+            <% if admin_signed_in? %>
+              <li><%= link_to "My Catalog", artworks_path %></li>
+              <li><%= link_to "My Galleries", galleries_path %></li>
+              <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete %></li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -54,16 +56,10 @@
   <div class="container">
       <%= bootstrap_flash %>
       <%= yield %>
+    <footer>
+      <p>&copy; Margaret Tsirantonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
+    </footer> 
+  </div>
 
-	<!--<div class="footer">
-		<a><span>&laquo; Margaret Tsirantonakis </span></a>
-		<span class="right_ab">
-			<a href="http://www.flickr.com/photos/smanography/" target="_blank">Images by Shermeee</a>
-			<a href="http://creativecommons.org/licenses/by/2.0/deed.en_GB">CC BY 2.0</a>
-			<a href="http://tympanus.net/codrops/2011/09/20/responsive-image-gallery/"><strong>back to the Codrops post</strong></a>
-		</span>
-		<div class="clr"></div>
-	</div> footer -->
-  </div> 
 </body>
 </html>

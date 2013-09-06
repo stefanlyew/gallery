@@ -1,4 +1,5 @@
 class ArtworksController < ApplicationController
+  before_filter :authenticate_admin!
   # GET /artworks
   # GET /artworks.json
   def index

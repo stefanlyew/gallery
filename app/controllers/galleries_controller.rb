@@ -1,4 +1,5 @@
 class GalleriesController < ApplicationController
+  before_filter :authenticate_admin!, :except => :show 
   # GET /galleries
   # GET /galleries.json
   def index

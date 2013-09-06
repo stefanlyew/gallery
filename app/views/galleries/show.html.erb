@@ -13,33 +13,31 @@
   </script>
 <!-- End Pretty Photo Window -->
 
-<%= link_to 'Galleries', galleries_path %> |
-<%= link_to 'Edit', edit_gallery_path(@gallery) %>
-
- 
- <!-- debugging -->
-<!--  <p><%= @curatings %></p>
-<p><%= @artworks %></p>-->        
+<% if admin_signed_in? %>
+  <%= link_to 'Galleries', galleries_path %> |
+  <%= link_to 'Edit', edit_gallery_path(@gallery) %>
+<% end %>      
             
             <div class="gallery">
             <h2 class="page-title"><%= @gallery.title %></h2>
 
-      <!-- have to make this sortable only if signed in -->
-      <ul class="thumbnails" id="sortable" data-update-url="<%= sort_gallery_path(@gallery) %>"> 
-        <% @artworks.each do |artwork| %>
-                  <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
+      <!-- Thumbnail ul sortable only if signed in -->
+
+    <%= content_tag(:ul, 
+                    class: "thumbnails", 
+                    data: { :'update-url' => sort_gallery_path(@gallery) }, 
+                    id: (admin_signed_in?) ? 'sortable' : nil) do -%>
+
+          <% @artworks.each do |artwork| %>
+            <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
                     <!-- This was a crazy little string-interpolation puzzle-->
-                        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", :data => { :'glisse-big' => "#{artwork.asset}" }, title: "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>
+                        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>
                   </li>
                 <% end %>
-
-            </ul><!--end thumbnails -->
-
+    <% end -%>
 
 
-            <footer>
-                <p>&copy; Margaret Tsirantonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
-            </footer>
+
 
         </div> <!-- /container -->
 

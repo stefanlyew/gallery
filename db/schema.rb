@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906040324) do
+ActiveRecord::Schema.define(:version => 20130906174210) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -50,6 +50,10 @@ ActiveRecord::Schema.define(:version => 20130906040324) do
     t.datetime "asset_updated_at"
     t.integer  "year"
     t.string   "category"
+    t.text     "notes"
+    t.boolean  "sold"
+    t.date     "datesold"
+    t.string   "soldto"
   end
 
   create_table "curatings", :force => true do |t|
