@@ -1,78 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Responsive Image Gallery</title>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
-        <meta name="description" content="Responsive Image Gallery with jQuery" />
-        <meta name="keywords" content="jquery, carousel, image gallery, slider, responsive, flexible, fluid, resize, css3" />
-		<meta name="author" content="Codrops" />
-		<link rel="shortcut icon" href="../favicon.ico">
-	    <%= stylesheet_link_tag "demo" %> 
-	    <%= stylesheet_link_tag "style" %>
-	    <%= stylesheet_link_tag "elastislide" %>
-		<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow&v1' rel='stylesheet' type='text/css' />
-		<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css' />
-		<noscript>
-			<style>
-				.es-carousel ul{
-					display:block;
-				}
-			</style>
-		</noscript>
-		<script id="img-wrapper-tmpl" type="text/x-jquery-tmpl">	
-			<div class="rg-image-wrapper">
-				{{if itemsCount > 1}}
-					<div class="rg-image-nav">
-						<a href="#" class="rg-image-nav-prev">Previous Image</a>
-						<a href="#" class="rg-image-nav-next">Next Image</a>
-					</div>
-				{{/if}}
-				<div class="rg-image"></div>
-				<div class="rg-loading"></div>
-				<div class="rg-caption-wrapper">
-					<div class="rg-caption" style="display:none;">
-						<p></p>
-					</div>
-				</div>
-			</div>
-		</script>
-    </head>
-    <body>
-		<div class="container">
-			
-			<div class="content">
-				<h1>Responsive Image Gallery <span>A jQuery image gallery with a thumbnail carousel</span></h1>
-				<div id="rg-gallery" class="rg-gallery">
-					<div class="rg-thumbs">
-						<!-- Elastislide Carousel Thumbnail Viewer -->
-						<div class="es-carousel-wrapper">
-							<div class="es-nav">
-								<span class="es-nav-prev">Previous</span>
-								<span class="es-nav-next">Next</span>
-							</div>
-							<div class="es-carousel">
-								<ul>
-									<li><a href="#"><%= image_tag "thumbs/1.jpg", 'data-large' => "/assets/1.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-									<li><a href="#"><%= image_tag "thumbs/2.jpg", 'data-large' => "/assets/2.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-									<li><a href="#"><%= image_tag "thumbs/1.jpg", 'data-large' => "/assets/1.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-									<li><a href="#"><%= image_tag "thumbs/2.jpg", 'data-large' => "/assets/2.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-									<li><a href="#"><%= image_tag "thumbs/1.jpg", 'data-large' => "/assets/1.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-									<li><a href="#"><%= image_tag "thumbs/2.jpg", 'data-large' => "/assets/2.jpg", alt: "image01", 'data-description' => "From off a hill whose concave womb reworded" %></a></li>
-								</ul>
-							</div>
-						</div>
-						<!-- End Elastislide Carousel Thumbnail Viewer -->
-					</div><!-- rg-thumbs -->
-				</div><!-- rg-gallery -->
-				<p class="sub">Want more Shakespeare? <a href="http://www.opensourceshakespeare.org/" target="_blank">http://www.opensourceshakespeare.org/</a></p>
-			</div><!-- content -->
-		</div><!-- container -->
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <%= javascript_include_tag "jquery.tmpl.min" %>
-    <%= javascript_include_tag "jquery.easing.1.3" %>
-    <%= javascript_include_tag "jquery.elastislide" %>
-    <%= javascript_include_tag "gallery" %>
-    </body>
-</html>
+<%= stylesheet_link_tag "main" %> 
+<!--  Carousel - consult the Twitter Bootstrap docs at
+      http://twitter.github.com/bootstrap/javascript.html#carousel -->
+<div id="this-carousel-id" class="carousel slide"><!-- class of slide for animation -->
+  <div class="carousel-inner">
+    <div class="item active"><!-- class of active since it's the first item -->
+      <img src="http://placehold.it/2048x1024" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/2048x1024" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/2048x1024" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+    <div class="item">
+      <img src="http://placehold.it/2048x1024" alt="" />
+      <div class="carousel-caption">
+        <p>Caption text here</p>
+      </div>
+    </div>
+  </div><!-- /.carousel-inner -->
+  <!--  Next and Previous controls below
+        href values must reference the id for this carousel -->
+    <a class="carousel-control left" href="#this-carousel-id" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#this-carousel-id" data-slide="next">&rsaquo;</a>
+</div><!-- /.carousel -->
+
+            <footer>
+                <p>&copy; Tsiranktonakis 2013 <span class="pull-right credits"><a>mtsiran@hubar.com</a><a>(203) 961-8413</a></span></p>
+            </footer>
+
+
+<script>
+  $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>

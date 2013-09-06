@@ -1,5 +1,8 @@
 <h1>Listing galleries</h1>
 
+
+<%= link_to 'New Gallery', new_gallery_path %>
+
 <table>
   <tr>
     <th>Title</th>
@@ -16,10 +19,19 @@
     <td><%= link_to 'Show', gallery %></td>
     <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
     <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!-- <td><%= link_to 'Feature On Homepage?' %></td> -->
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<h3>Featured galleries</h3>
+<ol id="featuredsort" data-update-url="<%= featuredsort_galleries_url %>"> 
+<% featured_galleries.each do |gallery| %>
+    <li id="gallery_<%= gallery.id %>"><%= gallery.title %>
+        <%= link_to 'Edit', edit_gallery_path(gallery) %>
+        <!-- <%= link_to 'Remove From Featured' %> -->
+    </li>
+<% end %>
+</ul>

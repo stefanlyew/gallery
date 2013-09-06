@@ -14,7 +14,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @gallery = Gallery.find(params[:id])
-    @curatings = Curating.where("gallery_id = ?", 2).order("position").all
+    @curatings = Curating.where("gallery_id = ?", params[:id]).order("position").all
 
     @artworks = []
     @curatings.each do |curating|
@@ -96,8 +96,15 @@ class GalleriesController < ApplicationController
   def sort
     #curatings = Curating.find_all_by_gallery_id(params[:id])
     params[:artwork].each_with_index do |id, index|
-      Curating.update_all({position: index+1, gallery_id: params[:id]}, {artwork_id: id})
+      Curating.update_all({position: index+1}, {gallery_id: params[:id], artwork_id: id})
     end
     render nothing: true
   end
-end
+
+  def featuredsort
+    params[:gallery].each_with_index do |id, index|
+       Gallery.update_all({position: index+1}, {id: id})
+    end
+    render nothing: true
+    end
+  end

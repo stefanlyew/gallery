@@ -16,8 +16,12 @@
 <%= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%= link_to 'Galleries', galleries_path %>
  
-    <div class="container gallery">
-      <h2 class="page-title"><%= @gallery.title %></h2>
+ <!-- debugging -->
+<!--  <p><%= @curatings %></p>
+<p><%= @artworks %></p>-->        
+            
+            <div class="gallery">
+            <h2 class="page-title"><%= @gallery.title %></h2>
 
       <!-- have to make this sortable only if signed in -->
       <ul class="thumbnails" id="sortable" data-update-url="<%= sort_gallery_path(@gallery) %>"> 

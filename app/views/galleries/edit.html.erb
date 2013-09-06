@@ -1,8 +1,10 @@
-
-<h1>Editing gallery</h1>
-<%= link_to 'Show', @gallery %> |
-<%= link_to 'Back', galleries_path %>
-
+<div class="row">
+	<div class="span8"><h2>Editing gallery</h2></div>
+	<div class="span4">
+		<%= link_to 'Back To Index', galleries_path %> | 
+		<%= link_to 'Preview How This Gallery Looks', @gallery %>
+	</div>
+</div>
 <%= render 'form' %>
 
 
