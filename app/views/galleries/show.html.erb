@@ -1,20 +1,21 @@
 <%= stylesheet_link_tag "main" %> 
 <!-- Pretty Photo Window -->
-    <%= javascript_include_tag "prettyPhoto/plugins.js" %>
-    <%= javascript_include_tag "prettyPhoto/jquery.prettyPhoto.js" %>
-    <%= javascript_include_tag "prettyPhoto/main.js" %>
-    <script>
-
-        // Colorbox Call
-        $(document).ready(function(){
-            $("[rel^='lightbox']").prettyPhoto();
-        });
-    </script>
+  <script src="glisse.js"></script>
+  <script>
+  $(function () {
+      $('.pics').glisse({
+          changeSpeed: 550, 
+          speed: 100,
+          effect:'bounce',
+          fullscreen: true
+      }); 
+  });
+  </script>
 <!-- End Pretty Photo Window -->
 
+<%= link_to 'Galleries', galleries_path %> |
+<%= link_to 'Edit', edit_gallery_path(@gallery) %>
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Galleries', galleries_path %>
  
  <!-- debugging -->
 <!--  <p><%= @curatings %></p>
@@ -28,9 +29,7 @@
         <% @artworks.each do |artwork| %>
                   <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
                     <!-- This was a crazy little string-interpolation puzzle-->
-                      <a class='thumbnail' rel='lightbox[group]' href=<%= artwork.asset %> title='<%= "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>'> 
-                          <%= image_tag artwork.asset, class: "group1", alt: "" %>
-                      </a>
+                        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", :data => { :'glisse-big' => "#{artwork.asset}" }, title: "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>
                   </li>
                 <% end %>
 

@@ -1,106 +1,19 @@
         <%= stylesheet_link_tag "main" %> 
-
+        <script src="glisse.js"></script>
         <div class="container gallery">
             <h2 class="page-title">Art Gallery</h2>
 
-
+<!-- <img class="pics" src="thumb.jpg" data-glisse-big="big.jpg"/> -->
             <ul class="thumbnails">
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/1.jpg" title="You can add caption to pictures.">
-                        <%= image_tag "prettyphoto/pics/1.jpg", class: "group1", alt: "This is the title." %>
-                    </a>
-                </li>
+                  <li class="span3"> <!-- need id of model -->
+                    <!-- This was a crazy little string-interpolation puzzle-->
+                          <%= image_tag "prettyphoto/pics/1.jpg", class: "thumbnail pics", alt: "", :data => { :'glisse-big' => "/assets/prettyphoto/pics/1.jpg" } %>
+                      </a>
+                  </li>
 
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/2.jpg" title: "image01">
-                        <%= image_tag "prettyphoto/pics/2.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
+                
 
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/3.jpg">
-                        <%= image_tag "prettyphoto/pics/3.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/4.jpg">
-                        <%= image_tag "prettyphoto/pics/4.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/5.jpg">
-                        <%= image_tag "prettyphoto/pics/5.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/6.jpg">
-                        <%= image_tag "prettyphoto/pics/6.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/7.jpg">
-                        <%= image_tag "prettyphoto/pics/7.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/8.jpg">
-                        <%= image_tag "prettyphoto/pics/8.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-                               <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/1.jpg" title="You can add caption to pictures.">
-                        <%= image_tag "prettyphoto/pics/1.jpg", class: "group1", alt: "This is the title." %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/2.jpg" title: "image01">
-                        <%= image_tag "prettyphoto/pics/2.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/3.jpg">
-                        <%= image_tag "prettyphoto/pics/3.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/4.jpg">
-                        <%= image_tag "prettyphoto/pics/4.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/5.jpg">
-                        <%= image_tag "prettyphoto/pics/5.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/6.jpg">
-                        <%= image_tag "prettyphoto/pics/6.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/7.jpg">
-                        <%= image_tag "prettyphoto/pics/7.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
-
-                <li class="span3">
-                    <a class="thumbnail" rel="lightbox[group]" href="../assets/prettyphoto/pics/8.jpg">
-                        <%= image_tag "prettyphoto/pics/8.jpg", class: "group1", title: "image01" %>
-                    </a>
-                </li>
             </ul><!--end thumbnails -->
-
 
 
             <footer>
@@ -110,21 +23,13 @@
         </div> <!-- /container -->
 
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <%= javascript_include_tag "prettyPhoto/plugins.js" %>
-        <%= javascript_include_tag "prettyPhoto/jquery.prettyPhoto.js" %>
-        <%= javascript_include_tag "prettyPhoto/main.js" %>
-        <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-
-            // Colorbox Call
-
-            $(document).ready(function(){
-                $("[rel^='lightbox']").prettyPhoto();
-            });
-        </script>
+<script>
+$(function () {
+    $('.pics').glisse({
+        changeSpeed: 550, 
+        speed: 500,
+        effect:'bounce',
+        fullscreen: true
+    }); 
+});
+</script>

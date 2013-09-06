@@ -2,15 +2,16 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-body {
-  background: url('../assets/prettyphoto/black_lozenge.png') repeat;
-}
-
 body{
   background:#1F1F1F url(../assets/pattern.png) repeat top left;
   color:#fff;
   font-family: 'PT Sans Narrow', Arial, sans-serif;
   font-size:14px;
+}
+
+.well{
+  background-color: #000;
+  border: #999999;
 }
 
 .centered {
