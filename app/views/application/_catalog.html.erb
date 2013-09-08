@@ -1,0 +1,42 @@
+<!-- FILTRIFY ================== -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<%= javascript_include_tag "filtrify/script.js" %>
+<%= javascript_include_tag "filtrify/filtrify.min.js" %>
+<script type="text/javascript">
+    $(function() {
+
+        $.filtrify("container", "placeHolder");
+
+    });
+</script>
+<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</span><![endif]-->
+
+<div class="well"><div id="placeHolder"></div></div>
+<div class="container gallery">
+    <ul class="thumbnails" id="container">
+        <% @artworks.each do |artwork| %>
+          <%= tag(:li, 
+            class: "span3", 
+            data: { :'category' => artwork.category,
+                    :'keyword' => artwork.tag_list,
+                    :'medium' => artwork.medium,
+                    :'year' => artwork.year }
+                    ) -%>
+
+            <div class="thumbnail">
+                <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+              <div class="caption">
+                <%= label_tag artwork.title -%>
+                <% if controller_name == 'artworks'%>
+                  <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
+                <% elsif controller_name == 'galleries'%>
+                  <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+
+                <% end %>
+              </div>
+            </div>
+          </li>
+        <% end %>
+    </ul>
+</div>  

@@ -1,5 +1,5 @@
 <%= stylesheet_link_tag "main" %> 
-<!-- Pretty Photo Window -->
+<!-- Lightbox -->
   <script src="glisse.js"></script>
   <script>
   $(function () {
@@ -11,35 +11,29 @@
       }); 
   });
   </script>
-<!-- End Pretty Photo Window -->
+<!-- Lightbox -->
 
 <% if admin_signed_in? %>
+  <h4>Drag And Drop To Reorder Art Pieces</h4>
   <%= link_to 'Galleries', galleries_path %> |
   <%= link_to 'Edit', edit_gallery_path(@gallery) %>
 <% end %>      
             
-            <div class="gallery">
-            <h2 class="page-title"><%= @gallery.title %></h2>
-
-      <!-- Thumbnail ul sortable only if signed in -->
-
-    <%= content_tag(:ul, 
-                    class: "thumbnails", 
-                    data: { :'update-url' => sort_gallery_path(@gallery) }, 
-                    id: (admin_signed_in?) ? 'sortable' : nil) do -%>
-
-          <% @artworks.each do |artwork| %>
-            <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
-                    <!-- This was a crazy little string-interpolation puzzle-->
-                        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: "<i>#{artwork.title}</i>, #{artwork.year}. #{artwork.medium}. #{artwork.size}. Margaret Tsirantonakis. " %>
-                  </li>
-                <% end %>
-    <% end -%>
-
-
-
-
-        </div> <!-- /container -->
+<div class="gallery">
+  <h2 class="page-title"><%= @gallery.title %></h2>
+  <!-- Thumbnail ul sortable only if signed in -->
+  <%= content_tag( :ul, 
+                   class: "thumbnails", 
+                   data: { :'update-url' => sort_gallery_path(@gallery) }, 
+                   id: (admin_signed_in?) ? 'sortable' : nil
+                  ) do -%>
+    <% @artworks.each do |artwork| %>
+      <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
+        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: artwork.caption %>
+      </li>
+    <% end %>
+  <% end -%>
+</div> 
 
 
 

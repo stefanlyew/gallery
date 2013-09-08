@@ -15,6 +15,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @gallery = Gallery.find(params[:id])
+    #move this to model?
     @curatings = Curating.where("gallery_id = ?", params[:id]).order("position").all
 
     @artworks = []
@@ -32,7 +33,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/new.json
   def new
     @gallery = Gallery.new
-    @all_artworks = Artwork.all
+    @artworks = Artwork.all
     @current_artworks = @gallery.artworks
 
     respond_to do |format|
@@ -44,7 +45,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1/edit
   def edit
     @gallery = Gallery.find(params[:id])
-    @all_artworks = Artwork.all
+    @artworks = Artwork.all
     @current_artworks = @gallery.artworks
   end
 
