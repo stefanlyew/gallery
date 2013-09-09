@@ -7,10 +7,14 @@ module ApplicationHelper
 	end
 
 	def big_tag_list
-		Tag.all.map { |tag| tag.name }
+		Tag.all.map(&:name)
 	end
 
     def featured_galleries
 		Gallery.featured.all
     end
+
+  def nav_entry(body, path)
+    content_tag(:li, link_to(body, path), class: ('active' if current_page?(path)))
+  end
 end

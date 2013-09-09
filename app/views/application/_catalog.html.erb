@@ -35,7 +35,7 @@
             <div class="thumbnail">
                 <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
               <div class="caption">
-                <%= label_tag artwork.title -%>
+                <p><%= artwork.title -%></p>
                 <% if controller_name == 'artworks'%>
                   <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
                   <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>

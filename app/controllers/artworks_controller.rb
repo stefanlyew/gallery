@@ -4,7 +4,7 @@ class ArtworksController < ApplicationController
   # GET /artworks
   # GET /artworks.json
   def index
-    @artworks = Artwork.order(sort_column + " " + sort_direction)
+    @artworks = Artwork.order(sort_column + " " + sort_direction).includes(:tags)
 
     respond_to do |format|
       format.html # index.html.erb
