@@ -58,3 +58,11 @@ body{
   text-decoration: none;
   background: #000;
 }
+
+.asc:after {
+  content: " \25b2";
+}
+
+.desc:after {
+  content: " \25bc";
+}

@@ -3,15 +3,24 @@
 <%= javascript_include_tag "filtrify/script.js" %>
 <%= javascript_include_tag "filtrify/filtrify.min.js" %>
 <script type="text/javascript">
-    $(function() {
+  $(function() {
 
-        $.filtrify("container", "placeHolder");
+      $.filtrify("container", "placeHolder");
 
-    });
+  });
 </script>
 <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</span><![endif]-->
 
-<div class="well"><div id="placeHolder"></div></div>
+
+<div class="well" id=" filters">
+  <% if controller_name == 'artworks'%>
+    Sort by:
+    <%= sortable "title" %> |
+    <%= sortable "year" %>
+  <% end %>
+  <br />
+  Filter by:<div id="placeHolder"></div>
+</div>
 <div class="container gallery">
     <ul class="thumbnails" id="container">
         <% @artworks.each do |artwork| %>

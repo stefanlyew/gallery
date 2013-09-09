@@ -12,7 +12,8 @@
 
 <%= simple_form_for(@artwork) do |f| %>
   <%= f.error_notification %>
-      <%= f.input :title %>
+    <%= f.input :title %>
+    <fieldset>
       <%= f.input :asset, as: :file, :label => "Upload Image" %>
         <% if f.object.asset? %>
           <div class="control-group">
@@ -20,6 +21,12 @@
           <div class="controls">
           <%= image_tag f.object.asset.url %>
         <% end %>
+        <br />
+      <%= f.label :tag_list, "Keywords" %>
+      <%= f.text_field :tag_list, id: "tagit" %>
+      <%= f.association :galleries, as: :check_boxes %>
+      
+    </fieldset>
     <fieldset>
       <legend>Description</legend>
       <%= f.input :year, 
@@ -31,12 +38,6 @@
       <%= f.input :size %>
       <%= f.input :medium %>
       <%= f.input :notes %>
-    </fieldset>
-    <fieldset>
-      <legend>Website</legend>
-      <%= f.association :galleries, as: :check_boxes %>
-      <%= f.label :tag_list, "Keywords" %><br />
-      <%= f.text_field :tag_list, id: "tagit" %>
     </fieldset>
     <fieldset>
       <legend>Business Record</legend>

@@ -1,12 +1,14 @@
 class ArtworksController < ApplicationController
+  helper_method :sort_column, :sort_direction 
   before_filter :authenticate_admin!
   # GET /artworks
   # GET /artworks.json
   def index
-    @artworks = Artwork.all
+    @artworks = Artwork.order(sort_column + " " + sort_direction)
 
     respond_to do |format|
       format.html # index.html.erb
+      format.js
       format.json { render json: @artworks }
     end
   end
@@ -81,4 +83,15 @@ class ArtworksController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+private
+
+  def sort_column
+    Artwork.column_names.include?(params[:sort]) ? params[:sort] : "title"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

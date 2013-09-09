@@ -29,7 +29,7 @@
                   ) do -%>
     <% @artworks.each do |artwork| %>
       <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
-        <%= image_tag artwork.asset, class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: artwork.caption %>
+        <%= image_tag artwork.asset(:thumbnail), class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: artwork.caption %>
       </li>
     <% end %>
   <% end -%>

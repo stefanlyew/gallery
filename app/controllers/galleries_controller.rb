@@ -15,13 +15,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @gallery = Gallery.find(params[:id])
-    #move this to model?
-    @curatings = Curating.where("gallery_id = ?", params[:id]).order("position").all
-
-    @artworks = []
-    @curatings.each do |curating|
-      @artworks << Artwork.find_by_id(curating.artwork_id)
-    end
+    @artworks = @gallery.artworks.find(:all, order: "position")
 
     respond_to do |format|
       format.html # show.html.erb
