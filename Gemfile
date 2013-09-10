@@ -1,15 +1,16 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-gem 'paperclip'
+gem 'rails', '~> 3.2.13'
+gem 'jquery-rails', "~> 2.3.0"
 
+gem 'paperclip'
+gem 'aws-sdk'
 gem 'devise'
 gem 'simple_form'
-gem 'acts_as_list'
-#gem 'jquery-ui-rails'
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+ gem 'capistrano'
+
+#gem 'jquery-ui-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -35,10 +36,9 @@ group :development, :test do
 end
 
 group :production do 
+  #mysql
 	gem 'pg'
 end
-
-gem 'jquery-rails', "~> 2.3.0"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -50,7 +50,6 @@ gem 'jquery-rails', "~> 2.3.0"
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
 
 # To use debugger
 # gem 'debugger'
