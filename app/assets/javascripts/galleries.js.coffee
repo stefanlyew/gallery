@@ -17,9 +17,9 @@ jQuery ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
 # Lightbox
-((window, PhotoSwipe) ->
-  document.addEventListener "DOMContentLoaded", (->
-    options = {}
-    instance = PhotoSwipe.attach(window.document.querySelectorAll(".thumbnails a"), options)
-  ), false
-) window, window.Code.PhotoSwipe
+#((window, PhotoSwipe) ->
+#  document.addEventListener "DOMContentLoaded", (->
+#    options = {}
+#    instance = PhotoSwipe.attach(window.document.querySelectorAll(".thumbnails #a"), #options)
+#  ), false
+#) window, window.Code.PhotoSwipe

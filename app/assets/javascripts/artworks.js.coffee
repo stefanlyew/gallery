@@ -3,11 +3,11 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 #keyword autocomlete
-jQuery ->
-  sampleTags = $('#tagit').data('keywords');
-  $('#tagit').tagit({
-    availableTags: sampleTags
-  });  
+#jQuery ->
+#  sampleTags = $('#tagit').data('keywords');
+#  $('#tagit').tagit({
+#    availableTags: sampleTags
+#  });  
 
 
     
