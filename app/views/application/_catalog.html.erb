@@ -8,8 +8,6 @@
 
   });
 </script>
-<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</span><![endif]-->
-
 
 <div class="well" id=" filters">
   <% if controller_name == 'artworks'%>
@@ -20,6 +18,7 @@
   <br />
   Filter by:<div id="placeHolder"></div>
 </div>
+
 <div class="container gallery">
     <ul class="thumbnails" id="container">
         <% @artworks.each do |artwork| %>
@@ -31,20 +30,18 @@
                     :'year' => artwork.year }
                     ) -%>
 
-            <div class="thumbnail">
-                <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
-              <div class="caption">
-                <p><%= artwork.title -%></p>
-                <% if controller_name == 'artworks'%>
-                  <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
-                <% elsif controller_name == 'galleries'%>
-                  <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
-
-                <% end %>
-              </div>
+          <div class="thumbnail">
+            <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+            <div class="caption">
+              <p><%= artwork.title -%></p>
+              <% if controller_name == 'artworks'%>
+                <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
+              <% elsif controller_name == 'galleries'%>
+                <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+              <% end %>
             </div>
-          </li>
+          </div>
         <% end %>
     </ul>
 </div>  

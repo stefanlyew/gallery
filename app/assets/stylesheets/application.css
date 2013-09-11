@@ -12,6 +12,8 @@
  *= require_tree .
  *= require main
  */
+
+ /* keyword styling */
 ul.ui-autocomplete {
   position: absolute;
   list-style: none;
