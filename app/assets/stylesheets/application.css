@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require main
  */
 ul.ui-autocomplete {
   position: absolute;
@@ -34,3 +35,4 @@ ul.ui-autocomplete {
     }
   }
 }
+
