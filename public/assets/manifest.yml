@@ -27,6 +27,8 @@ views.png: views-648f4b58e3608bf62590003101f72d1d.png
 views/index.png: views-648f4b58e3608bf62590003101f72d1d.png
 application.js: application-e77404ddbacbb5ebd3f1f7e388fab1cf.js
 application/index.js: application-e77404ddbacbb5ebd3f1f7e388fab1cf.js
+filtrify.js: filtrify-14148f35a627703324cb9268e8d69414.js
+filtrify/index.js: filtrify-14148f35a627703324cb9268e8d69414.js
 application.css: application-b7cb121c8882bae00a585d7f810b8273.css
 application/index.css: application-b7cb121c8882bae00a585d7f810b8273.css
 fontawesome-webfont.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot

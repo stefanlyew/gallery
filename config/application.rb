@@ -61,6 +61,6 @@ module Mtsiran
 
     #for devise
     config.assets.initialize_on_precompile = false
-
+    config.assets.precompile += ['filtrify.js']
   end
 end
