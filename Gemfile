@@ -7,8 +7,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'devise'
 gem 'simple_form'
-
- gem 'capistrano'
+gem 'thin'
+gem 'capistrano'
 
 #gem 'jquery-ui-rails'
 
@@ -26,9 +26,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :development do 
-	gem 'thin'
-end
 
 group :development, :test do
 	gem 'sqlite3'
