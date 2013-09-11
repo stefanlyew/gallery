@@ -1,6 +1,5 @@
 class CreateArtworks < ActiveRecord::Migration
   def change
-    drop_table :artworks
     create_table :artworks do |t|
       t.string :title
       t.date :year
