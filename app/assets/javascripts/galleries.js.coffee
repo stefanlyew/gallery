@@ -16,11 +16,10 @@ jQuery ->
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
-#galleries lightbox
-  jQuery ->
-    $('.pics').glisse({
-          changeSpeed: 550, 
-          speed: 100,
-          effect:'bounce',
-          fullscreen: true
-      }); 
+# Lightbox
+((window, PhotoSwipe) ->
+  document.addEventListener "DOMContentLoaded", (->
+    options = {}
+    instance = PhotoSwipe.attach(window.document.querySelectorAll(".thumbnails a"), options)
+  ), false
+) window, window.Code.PhotoSwipe
