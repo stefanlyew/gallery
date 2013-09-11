@@ -1,22 +1,3 @@
-  <script type="text/javascript">
-
-    (function(window, PhotoSwipe){
-    
-      document.addEventListener('DOMContentLoaded', function(){
-      
-        var
-          options = {},
-          instance = PhotoSwipe.attach( window.document.querySelectorAll('.thumbnails a'), options );
-      
-      }, false);
-      
-      
-    }(window, window.Code.PhotoSwipe));
-    
-  </script>
-
-  
-
 <% if admin_signed_in? %>
   <h4>Drag And Drop To Reorder Art Pieces</h4>
   <%= link_to 'Galleries', galleries_path %> |
