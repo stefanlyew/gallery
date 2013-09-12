@@ -1,1 +1,0 @@
-$("#source").quicksand($("#destination li"));

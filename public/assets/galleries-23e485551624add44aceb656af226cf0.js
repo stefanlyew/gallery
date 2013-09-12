@@ -1,1 +1,0 @@
-(function(){jQuery(function(){return $("#sortable").sortable({update:function(){return $.post($(this).data("update-url"),$(this).sortable("serialize"))}})}),jQuery(function(){return $("#featuredsort").sortable({axis:"y",update:function(){return $.post($(this).data("update-url"),$(this).sortable("serialize"))}})})}).call(this);
