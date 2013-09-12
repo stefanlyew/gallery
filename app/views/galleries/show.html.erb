@@ -1,15 +1,21 @@
 
 <!-- Lightbox -->
 
-  <script>
-  $(function () {
-      $('.pics').glisse({
-          changeSpeed: 550, 
-          speed: 100,
-          effect:'bounce',
-          fullscreen: true
-      }); 
-  });
+  <script type="text/javascript">
+
+    (function(window, PhotoSwipe){
+    
+      document.addEventListener('DOMContentLoaded', function(){
+      
+        var
+          options = {},
+          instance = PhotoSwipe.attach( window.document.querySelectorAll('.thumbnails a'), options );
+      
+      }, false);
+      
+      
+    }(window, window.Code.PhotoSwipe));
+    
   </script>
 <!-- Lightbox -->
 
@@ -29,7 +35,7 @@
                   ) do -%>
     <% @artworks.each do |artwork| %>
       <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
-        <%= image_tag artwork.asset(:thumbnail), class: "thumbnail pics", rel: 'group1', alt: "", data: { :'glisse-big' => "#{artwork.asset}" }, title: artwork.caption %>
+        <%= link_to(image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption), "#{artwork.asset}") %>
       </li>
     <% end %>
   <% end -%>

@@ -14,5 +14,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require filtrify
+//= require klass.min
+//= require code.photoswipe-3.0.5.min
 //= require_tree .
