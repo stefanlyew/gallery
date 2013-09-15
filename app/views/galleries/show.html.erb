@@ -8,7 +8,10 @@
       document.addEventListener('DOMContentLoaded', function(){
       
         var
-          options = {},
+          options = {
+            captionAndToolbarFlipPosition: true,
+            captionAndToolbarAutoHideDelay: 0
+          },
           instance = PhotoSwipe.attach( window.document.querySelectorAll('.thumbnails a'), options );
       
       }, false);

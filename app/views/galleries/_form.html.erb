@@ -1,3 +1,16 @@
+<!-- FILTRIFY ================== -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<%= javascript_include_tag "filtrify.js" %>
+<script type="text/javascript">
+  $(function() {
+
+      $.filtrify("balls", "placeHolder");
+
+  });
+</script>
+<!-- END FILTRIFY ================== -->
+
+
 <%= form_for(@gallery) do |f| %>
   <!-- ERRORS MESSAGE -->
   <% if @gallery.errors.any? %>
@@ -12,32 +25,58 @@
     </div>
   <% end %>
   <!-- ERRORS MESSAGE -->
-  <div class="row">
-    <div class="span3">
-      <%= f.label :title, 'Gallery Title' %>
-      <%= f.text_field :title %>
-    </div>
-    <div class="span3">
-      <%= f.label :description %>
-      <%= f.text_field :description %>
-    </div>
-    <div class="span3">
-      <%= f.label :quote %>
-      <%= f.text_field :quote %>
-    </div>
-    <div class="span3">
-       <i class="icon-large icon-edit"></i> 
-      <%= f.submit 'Update Preferences for this Gallery', :class => 'btn btn-success' %>
-    </div>
-  </div>
+  <div class="main">
+      <div class="box">
+          <div class="row-fluid">
+              <div class="column span3">
+                <ul class="nav nav-list nav-fixed-sidebar">
+                  <h2>Editing gallery</h2>
+                    <%= link_to 'Back To Index', galleries_path %> | 
+                    <%= link_to 'Preview How This Gallery Looks', @gallery %>
 
-  <div class="row">
-    <div class="span3 well pull-right">
-      <%= f.label :featured, 'Featured On Front Page?' %>
-      <%= f.check_box :featured %>
-    </div>
-  </div>
+                        <%= f.label :title, 'Gallery Title' %>
+                        <%= f.text_field :title %>
+                        <%= f.label :description %>
+                        <%= f.text_field :description %>
+                        <%= f.label :quote %>
+                        <%= f.text_field :quote %>
+                        <div class="well">                      
+                          <%= f.label :featured, 'Featured On Front Page?' %>
+                          <%= f.check_box :featured %>
+                        </div>                      
+                        <%= f.submit 'Update Settings for this Gallery', :class => 'btn btn-success' %>
+                </ul>
+              </div>
+              <div class="column span9">
+                  <div class="padding">
+                      <div class="full span9" id="balls">
+                        <div class="well" id=" filters">
+                          Filter by:<div id="placeHolder"></div>
+                        </div>
+                          <% @artworks.each do |artwork| %>
+                            <%= tag(:li, 
+                              class: "span3", 
+                              data: { :'category' => artwork.category,
+                                      :'keyword' => artwork.tag_list,
+                                      :'medium' => artwork.medium,
+                                      :'year' => artwork.year }
+                                      ) -%>
 
-  <h5>Select What Art Pieces You Want in this Gallery</h5>
-  <%= render 'catalog' %>
+                            <div class="thumbnail">
+                              <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+                              <div class="caption">
+                                <p><%= artwork.title -%></p>
+                                  <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                        </ul>
+                        </div>
+                      </div>  
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
 <% end %>

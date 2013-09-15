@@ -13,7 +13,7 @@
  
 body.ps-active, body.ps-building, div.ps-active, div.ps-building
 {
-	background: #000;
+	background: #fff;
 	overflow: hidden;
 }
 body.ps-active *, div.ps-active *
@@ -30,14 +30,14 @@ body.ps-active *:focus, div.ps-active *:focus
 /* Document overlay */
 div.ps-document-overlay 
 {
-	background: #000;
+	background: #fff;
 }
 
 
 /* UILayer */
 div.ps-uilayer { 
 	
-	background: #000;
+	background: #fff;
 	cursor: pointer;
 	
 }
@@ -45,7 +45,7 @@ div.ps-uilayer {
 
 /* Zoom/pan/rotate layer */
 div.ps-zoom-pan-rotate{
-	background: #000;
+	background: #fff;
 }
 div.ps-zoom-pan-rotate *  { display: block; }
 
@@ -60,16 +60,21 @@ div.ps-carousel-item-error
 { 
 	background: url(error.gif) no-repeat center center; 
 }
+/* */
+div.ps-carousel-item img
+{
+	margin-top: 45px;
+	margin-bottom: 40px;
+	border: 5px solid black;
+}
+
 
 
 /* Caption */
 div.ps-caption
 { 
-	background: #000000;
-	background: -moz-linear-gradient(top, #303130 0%, #000101 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#303130), color-stop(100%,#000101));
-	border-bottom: 1px solid #42403f;
-	color: #ffffff;
+	background: #fff;
+	color: #000;
 	font-size: 13px;
 	font-family: "Lucida Grande", Helvetica, Arial,Verdana, sans-serif;
 	text-align: center;
@@ -78,8 +83,6 @@ div.ps-caption *  { display: inline; }
 
 div.ps-caption-bottom
 { 
-	border-top: 1px solid #42403f;
-	border-bottom: none;
 	min-height: 44px;
 }
 
@@ -93,9 +96,7 @@ div.ps-caption-content
 /* Toolbar */
 div.ps-toolbar
 { 
-	background: #000000;
-	background: -moz-linear-gradient(top, #303130 0%, #000101 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#303130), color-stop(100%,#000101));
+	background: #fff;
 	border-top: 1px solid #42403f;
 	color: #ffffff;
 	font-size: 13px;
@@ -111,7 +112,6 @@ div.ps-toolbar * {
 
 div.ps-toolbar-top 
 {
-	border-bottom: 1px solid #42403f;
 	border-top: none;
 }
 

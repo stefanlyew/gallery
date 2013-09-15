@@ -17,6 +17,6 @@ class Artwork < ActiveRecord::Base
   end
 
   def caption
-    "#{title}, #{year}. #{medium}. #{size}. Margaret Tsirantonakis. " 
+    "\"#{title}\", #{year}. #{medium}. #{size}. Margaret Tsirantonakis. " 
   end
 end

@@ -12,5 +12,5 @@ Mtsiran::Application.routes.draw do
   end
 
   match 'dashboard' => 'galleries#index', as: :admin_root
-
+   match 'side' => 'welcome#sidebar'
 end
