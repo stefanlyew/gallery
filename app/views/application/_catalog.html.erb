@@ -31,15 +31,12 @@
                   ) -%>
 
         <div class="thumbnail">
-          <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+          <%= link_to image_tag(artwork.asset(:thumbnail)), edit_artwork_path(artwork) %>
           <div class="caption">
             <p><%= artwork.title -%></p>
-            <% if controller_name == 'artworks'%>
+              <%= link_to "<i class=\"icon-large icon-folder-open text-right\"></i>Show".html_safe, artwork %>
               <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
-            <% elsif controller_name == 'galleries'%>
-              <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
-            <% end %>
           </div>
         </div>
       <% end %>

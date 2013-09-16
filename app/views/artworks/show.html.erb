@@ -1,4 +1,7 @@
-<p>
+<div class="container">
+<div class="row-fluid"><%= link_to 'Edit', edit_artwork_path(@artwork) %> |
+<%= link_to 'Back', artworks_path %></div>
+<div class="row-fluid"><div class="span3"><p>
   <b>Title:</b>
   <%= @artwork.title %>
 </p>
@@ -11,11 +14,6 @@
 <p>
   <b>Size:</b>
   <%= @artwork.size %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @artwork.price %>
 </p>
 
 <p>
@@ -32,19 +30,26 @@
   <b>Price:</b>
   <%= @artwork.price %>
   <% if @artwork.sold %>
-    <p>"This piece was sold to #{@artwork.soldto}" on #{@artwork.datesold}</p>
+    <p><%= "This piece was sold to #{@artwork.soldto} on #{@artwork.datesold}" %></p>
   <% end %>
 </p>
-
-<p>
   <b>Notes:</b>
   <%= @artwork.notes %>
 </p>
-
 <p>
   <b>Keywords:</b>
   <%= @artwork.tag_list %>
 </p>
+</div>
+
+<div class="span4"><p>
+  <b>Current Image:</b>
+</p>
+        <%= image_tag @artwork.asset(:thumbnail) %>
+
+
+</div>
+<div class="span3"><p>
 
 
 
@@ -52,7 +57,7 @@
   <% @artwork.galleries.each do |gallery| %>
   <p><%= gallery.title %></p>
   <% end %>
+</div></div>
 
 
-<%= link_to 'Edit', edit_artwork_path(@artwork) %> |
-<%= link_to 'Back', artworks_path %>
+</div>

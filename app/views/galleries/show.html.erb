@@ -22,7 +22,8 @@
   </script>
 <!-- Lightbox -->
 
-<% if admin_signed_in? %>
+<div class="container">
+  <% if admin_signed_in? %>
   <h4>Drag And Drop To Reorder Art Pieces</h4>
   <%= link_to 'Galleries', galleries_path %> |
   <%= link_to 'Edit', edit_gallery_path(@gallery) %>
@@ -44,6 +45,6 @@
   <% end -%>
 </div> 
 
-
+</div>
 
 

@@ -5,6 +5,7 @@ class Artwork < ActiveRecord::Base
   has_many :galleries, through: :curatings
   has_many :taggings
   has_many :tags, through: :taggings
+  before_save { |artwork| artwork.medium = medium.chomp(' ').chomp('.').chomp(' ').chomp('.') }
 
   def tag_list
     tags.join(", ")
@@ -19,4 +20,5 @@ class Artwork < ActiveRecord::Base
   def caption
     "\"#{title}\", #{year}. #{medium}. #{size}. Margaret Tsirantonakis. " 
   end
+
 end
