@@ -23,7 +23,7 @@
   <ul class="thumbnails" id="container">
       <% @artworks.each do |artwork| %>
         <%= tag(:li, 
-          class: "span3", 
+          class: "span2", 
           data: { :'category' => artwork.category,
                   :'keyword' => artwork.tag_list,
                   :'medium' => artwork.medium,
@@ -36,6 +36,7 @@
             <p><%= artwork.title -%></p>
               <%= link_to "<i class=\"icon-large icon-folder-open text-right\"></i>Show".html_safe, artwork %>
               <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <br/>
               <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
           </div>
         </div>

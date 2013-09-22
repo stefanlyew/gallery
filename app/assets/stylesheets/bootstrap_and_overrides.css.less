@@ -1,11 +1,8 @@
 @import "twitter/bootstrap/bootstrap";
 
-body { padding-top: 60px; }
-navbar { @navbarBackground: @black; }
+body { padding-top: 50px; }
 
 @import "twitter/bootstrap/responsive";
-
-
 
 // Set the correct sprite paths
 @iconSpritePath: image-url("twitter/bootstrap/glyphicons-halflings.png");
@@ -35,15 +32,72 @@ navbar { @navbarBackground: @black; }
 // Example:
 // @linkColor: #ff0000;
 
+//NavBar Overrides
+
+.navbar-inner {
+  background-color: #3C928C; /* background color will be black for all browsers */
+  background-image: none;
+  background-repeat: no-repeat;
+  filter: none;
+}
+
+.navbar .nav > li > a {
+  font-family: 'Abel', sans-serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  float: none;
+  padding: 15px 15px 15px;
+  color: #000;
+  text-decoration: none;
+  text-shadow: none
+}
+
+.navbar .brand {
+  font-family: 'Cinzel Decorative', cursive;
+  float: left;
+  display: block;
+  padding: 15px 20px 15px;
+  margin-left: -20px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #000;
+  text-shadow: none;
+}
+
+.navbar .nav > li > a:focus,
+.navbar .nav > li > a:hover {
+  background-color: #2d6e69;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #2d6e69;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+//Landing Page
+.carousel-caption {
+  background: #8B9799;
+}
+
+//Main Content
 body{
-  background:#1F1F1F url(../assets/pattern.png) repeat top left;
-  color:#fff;
-  font-family: 'PT Sans Narrow', Arial, sans-serif;
+  background:#fff url(../assets/pattern.png) repeat top left;
+  color:#000;
+  font-family: 'Oxygen', Arial, sans-serif;
   font-size:14px;
 }
 
 .well{
-  background-color: #000;
+  background-color: #D4D8D1;
   border: #999999;
 }
 
@@ -57,7 +111,6 @@ body{
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  border: 1px solid #444;
 }
 .thumbnail img {
   opacity: .75;
@@ -65,19 +118,28 @@ body{
 .thumbnail img:hover {
   opacity: 1;
 }
+
+.thumbnail .caption {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -moz-binding: url('assets/xml/ellipsis.xml#ellipsis');
+}
+
 .gallery {
   color: #fff;
 }
+
 .gallery h2 {
-  font-family: 'Yesteryear', arial, helvetica, sans;
-  color: #eee;
+  font-family: 'Adamina', arial, helvetica, serif;
+  color: #000;
   text-align: center;
   margin-bottom: 15px;
   font-size: 4.5em;
   font-weight: 200;
   line-height: 1.65em;
   border-bottom: 1px solid #000;
-  text-shadow: 3px 4px 0px rgba(0, 0, 0, 0.76);
 }
 .credits a {
   margin-right: 15px;
@@ -92,13 +154,7 @@ body{
   background: #000;
 }
 
-.asc:after {
-  content: " \25b2";
-}
 
-.desc:after {
-  content: " \25bc";
-}
 
 /* bootstrap overrides */
 
@@ -146,3 +202,13 @@ html, body {
 textarea {
   height: 80px;
 }
+
+/* Sort By Tags */
+.asc:after {
+  content: " \25b2";
+}
+
+.desc:after {
+  content: " \25bc";
+} 
+

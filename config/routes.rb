@@ -11,6 +11,8 @@ Mtsiran::Application.routes.draw do
   	collection { post :featuredsort }
   end
 
+  match "profile", :to => "welcome#profile"
+
   match 'dashboard' => 'galleries#index', as: :admin_root
    match 'side' => 'welcome#sidebar'
 end

@@ -1,4 +1,5 @@
 <div class="container">
+  <h2 class="page-title">My Galleries</h2>
   <%= link_to "<i class=\"icon-plus icon-remove text-right\"></i>New Gallery".html_safe, new_gallery_path, :class => 'btn btn-success' %>
 <br />
 <br />
@@ -16,7 +17,7 @@
 
 <br />
 
-<h3>Listing galleries</h3>
+<h3>Listing all galleries</h3>
 <table>
 <% @galleries.each do |gallery| %>
   <tr>

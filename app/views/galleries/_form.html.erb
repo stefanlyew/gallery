@@ -32,7 +32,7 @@
                 <ul class="nav nav-list nav-fixed-sidebar">
                   <h2>Editing gallery</h2>
                     <%= link_to 'Back To Index', galleries_path %> | 
-                    <%= link_to 'Preview How This Gallery Looks', @gallery %>
+                    <%= link_to 'Preview This Gallery', @gallery %>
 
                         <%= f.label :title, 'Gallery Title' %>
                         <%= f.text_field :title %>
@@ -55,7 +55,7 @@
                         </div>
                           <% @artworks.each do |artwork| %>
                             <%= tag(:li, 
-                              class: "span3", 
+                              class: "span2", 
                               data: { :'category' => artwork.category,
                                       :'keyword' => artwork.tag_list,
                                       :'medium' => artwork.medium,
@@ -80,3 +80,4 @@
       </div>
   </div>
 <% end %>
+

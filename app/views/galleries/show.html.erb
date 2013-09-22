@@ -38,7 +38,7 @@
                    id: (admin_signed_in?) ? 'sortable' : nil
                   ) do -%>
     <% @artworks.each do |artwork| %>
-      <li class="span3" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
+      <li class="span2" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
         <%= link_to(image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption), "#{artwork.asset}") %>
       </li>
     <% end %>
