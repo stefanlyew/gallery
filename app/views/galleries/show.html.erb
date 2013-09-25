@@ -1,3 +1,32 @@
+<div class="container">
+  <% if admin_signed_in? %>
+  <h4>Drag And Drop To Reorder Art Pieces</h4>
+  <%= link_to 'Galleries', galleries_path %> |
+  <%= link_to 'Edit', edit_gallery_path(@gallery) %>
+<% end %>      
+            <br/>
+            <br/>
+<div class="gallery">
+  <h4><%= @gallery.description %></h4>
+  <br/>
+  <br/>
+  <!-- <h2 class="page-title"><%= @gallery.title %></h2> -->
+  <!-- Thumbnail ul sortable only if signed in -->
+  <%= content_tag( :ul, 
+                   class: "thumbnails", 
+                   data: { :'update-url' => sort_gallery_path(@gallery) }, 
+                   id: (admin_signed_in?) ? 'sortable' : nil
+                  ) do -%>
+    <% @artworks.each do |artwork| %>
+      <li class="span2" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
+        <%= link_to(image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption), "#{artwork.asset}") %>
+      </li>
+    <% end %>
+  <% end -%>
+</div> 
+
+</div>
+
 
 <!-- Lightbox -->
 
@@ -21,30 +50,3 @@
     
   </script>
 <!-- Lightbox -->
-
-<div class="container">
-  <% if admin_signed_in? %>
-  <h4>Drag And Drop To Reorder Art Pieces</h4>
-  <%= link_to 'Galleries', galleries_path %> |
-  <%= link_to 'Edit', edit_gallery_path(@gallery) %>
-<% end %>      
-            
-<div class="gallery">
-  <h2 class="page-title"><%= @gallery.title %></h2>
-  <!-- Thumbnail ul sortable only if signed in -->
-  <%= content_tag( :ul, 
-                   class: "thumbnails", 
-                   data: { :'update-url' => sort_gallery_path(@gallery) }, 
-                   id: (admin_signed_in?) ? 'sortable' : nil
-                  ) do -%>
-    <% @artworks.each do |artwork| %>
-      <li class="span2" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
-        <%= link_to(image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption), "#{artwork.asset}") %>
-      </li>
-    <% end %>
-  <% end -%>
-</div> 
-
-</div>
-
-
