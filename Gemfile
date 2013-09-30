@@ -3,12 +3,14 @@ source 'https://rubygems.org'
 gem 'rails', '~> 3.2.13'
 gem 'jquery-rails', "~> 2.3.0"
 
+gem 'pg'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'aws-sdk'
+gem "aws-s3"
 gem 'devise'
 gem 'simple_form'
-gem 'thin'
+gem 'unicorn'
 gem 'capistrano'
 
 #gem 'jquery-ui-rails'
@@ -29,13 +31,17 @@ end
 
 
 group :development, :test do
-	gem 'sqlite3'
 	gem 'log_buddy'
+  gem "rspec-rails", "~> 2.14.0"
+  gem "factory_girl_rails", "~> 4.2.1"
 end
 
-group :production do 
-  #mysql
-	gem 'pg'
+group :test do
+  gem "faker", "~> 1.1.2"
+  gem "capybara", "~> 2.1.0"
+  gem "database_cleaner", "~> 1.0.1"
+  gem "launchy", "~> 2.3.0"
+  gem "selenium-webdriver", "~> 2.35.1"
 end
 
 # To use ActiveModel has_secure_password
