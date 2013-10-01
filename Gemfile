@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '~> 3.2.13'
 gem 'jquery-rails', "~> 2.3.0"
@@ -12,6 +12,8 @@ gem 'devise'
 gem 'simple_form'
 gem 'unicorn'
 gem 'capistrano'
+gem 'rvm-capistrano'
+
 
 #gem 'jquery-ui-rails'
 

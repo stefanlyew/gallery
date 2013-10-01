@@ -20,7 +20,7 @@ test:
 
 production:
   user: mtsiran
-  password: 'Marg&Art&1958'
+  password: 
   adapter: postgresql
   encoding: unicode
   database: mtsiran_production
