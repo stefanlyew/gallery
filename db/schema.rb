@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131004011243) do
+ActiveRecord::Schema.define(:version => 20131004173550) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -81,6 +81,25 @@ ActiveRecord::Schema.define(:version => 20131004011243) do
     t.boolean  "featured"
     t.text     "quote"
     t.integer  "position"
+  end
+
+  create_table "profiles", :force => true do |t|
+    t.text     "quote"
+    t.text     "statement"
+    t.text     "recent_exhibits"
+    t.text     "news"
+    t.text     "bibliography"
+    t.text     "contact"
+    t.string   "resume_file_name"
+    t.string   "resume_content_type"
+    t.integer  "resume_file_size"
+    t.datetime "resume_updated_at"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "taggings", :force => true do |t|

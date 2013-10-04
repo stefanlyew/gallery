@@ -5,6 +5,7 @@ Mtsiran::Application.routes.draw do
   end
 
   root :to => 'carousel_items#index'
+  resources :profiles, only: [:show, :edit, :update]
   resources :carousel_items, except: [:show] do
     collection { post :sort }
   end
@@ -14,7 +15,6 @@ Mtsiran::Application.routes.draw do
   	collection { post :featuredsort }
   end
 
-  match "profile", :to => "welcome#profile"
 
   match 'dashboard' => 'galleries#index', as: :admin_root
    match 'side' => 'welcome#sidebar'

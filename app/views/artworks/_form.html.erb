@@ -14,18 +14,18 @@
 <div class="row-fluid">
     <div class="span3">
    <fieldset>
-         <legend>Description</legend>
-         <%= f.input :title %>
-         <%= f.input :year, 
-                     collection: 1990..Date.today.year, 
-                     selected: Date.today.year %>
-         <%= f.input :category, 
-                     collection: [ "Paintings", "Watercolors", "Drawings", "Prints"], 
-                     selected: "Paintings" %>
-         <%= f.input :size %>
-         <%= f.input :medium %>
+     <legend>Description</legend>
+     <%= f.input :title %>
+     <%= f.input :year, 
+                 collection: 1990..Date.today.year, 
+                 selected: Date.today.year %>
+     <%= f.input :category, 
+                 collection: [ "Paintings", "Watercolors", "Drawings", "Prints"], 
+                 selected: "Paintings" %>
+     <%= f.input :size %>
+     <%= f.input :medium %>
 
-       </fieldset>
+   </fieldset>
   </div>    
   <div class="span5">  
     <fieldset>

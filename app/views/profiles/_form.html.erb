@@ -1,0 +1,43 @@
+ <%= simple_form_for(@profile) do |f| %>
+  <%= f.error_notification %>
+  <br/>
+  <br/>
+  <div class="row">
+    <div class="span12">
+      <h4><%= f.input :quote, input_html: { style: "width: 1100px;" } %></h4>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="span12">
+      <%= f.input :photo, as: :file, :label => "Upload Artist Photo Optimal Size 1200x300" %>
+        <% if @profile.photo? %>
+          <%= image_tag @profile.photo %>
+        <% else %>
+         <img src="http://placehold.it/1200x300" alt="" />
+        <% end %>
+    </div>
+  </div>
+  <br/>
+  <div class="span6">
+    <p> <%= f.input :statement, input_html: { style: "width: 500px; height: 350px;" }  %></p>
+  </div>
+  <div class="span5">
+     <%= f.input :resume, as: :file, :label => "Upload Resume PDF" %>
+     <% if @profile.resume? %>
+       <%= image_tag @profile.resume %>
+     <% end %>
+     <%= f.input :recent_exhibits %>
+     <%= f.input :news %>
+     <%= f.input :bibliography %>
+     <%= f.input :contact %>
+     <div class="actions">
+        <%= f.submit nil, class: 'btn btn-primary' %>    
+        <%= link_to "Back", galleries_path, class: 'btn' %>
+     </div>
+  </div>
+</div>
+  </div>
+
+
+<% end %>

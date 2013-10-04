@@ -1,116 +1,86 @@
-  <div class="row tabbable">
-    <div class="span3 fixme">
-      <h1>Bootstrap Site Tabs + Fixed Sidebar</h1>
-      <hr>
-      <p>Choose a tab, then scroll to see the effect! Snippets for some sections are courtesy of <a href="http://bootsnipp.com" target="_blank">Bootsnipp.com</a>.</p>
-      <h4>Admin Navigation</h4>
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#misc" data-toggle="tab">Gallery Manager</a></li>
-        <li><a href="#blog" data-toggle="tab">Website Layout</a></li>
-        <li><a href="#" data-toggle="tab">Edit Profile Page</a></li>
-        <li><a href="#photos" data-toggle="tab">Photos</a></li>
-        <li><a href="#photos" data-toggle="tab">Photos</a></li>
+<div class="row tabbable">
+  <div class="span3 fixme">
+    </br>
+    </br>
+    </br>
+    <h1>Bootstrap Site Tabs + Fixed Sidebar</h1>
+    <hr>
+    <p>Choose a tab, then scroll to see the effect! Snippets for some sections are courtesy of <a href="http://bootsnipp.com" target="_blank">Bootsnipp.com</a>.</p>
+    <h4>Admin Navigation</h4>
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active"><a href="#manager" data-toggle="tab">Gallery Manager</a></li>
+      <li><a href="#site" data-toggle="tab">Website Layout</a></li>
+      <li><%= link_to 'Edit Profile Page', edit_profile_path(@profile.id) %></li>
+      <li><%= link_to 'My Art Catalog', artworks_path %></li>
+    </ul>
+  </div>
 
-        
-      </ul>
-    </div>
-    <div class="span8 well pull-right">
-      <div class="tab-content">
-        <div id="blog" class="tab-pane">
+  <div class="span8 well pull-right">
+    <div class="tab-content">
+      <div id="site" class="tab-pane">
+        <h2>Navigation Bar Featured galleries</h2>
+        <h6>Drag And Drop To Reorder(will update on page refresh)</h6>
+        <ol class="sortable" data-update-url="<%= featuredsort_galleries_url %>"> 
+          <% featured_galleries.each do |gallery| %>
+            <li id="gallery_<%= gallery.id %>"><%= gallery.title %>
+              <%= link_to 'Edit', edit_gallery_path(gallery) %>
+              <!-- <%= link_to 'Remove From Featured' %> -->
+            </li>
+          <% end %>
+        </ol>
+        <br />
 
-<!-- create or edit? -->
-
-<h2>Navigation Bar Featured galleries</h2>
-<h6>Drag And Drop To Reorder(will update on page refresh)</h6>
-<ol class="sortable" data-update-url="<%= featuredsort_galleries_url %>"> 
-<% featured_galleries.each do |gallery| %>
-    <li id="gallery_<%= gallery.id %>"><%= gallery.title %>
-        <%= link_to 'Edit', edit_gallery_path(gallery) %>
-        <!-- <%= link_to 'Remove From Featured' %> -->
-    </li>
-<% end %>
-</ol>
-
-<br />
-
-<h3>Homepage Carousel Slideshow Pictures (Details)</h3>
-<%= link_to "Add New Picture For Homepage", new_carousel_item_path, :class => 'btn btn-success' %>
-<h6>Drag And Drop To Reorder</h6>
-<ul class="sortable thumbnails" data-update-url="<%= sort_carousel_items_url %>"> 
-<% @carousel_items.each do |item| %>
-    <li id="carousel_item_<%= item.id %>">
-      <div class="thumbnail">
-          <%= image_tag item.asset(:thumbnail) %>
-          <div class="caption">
-              <%= link_to 'Edit', edit_carousel_item_path(item) %>
-              <div class="pull-right"><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-          </div>
-        </div>
-    </li>
-<% end %>
-</ul>
-
-        </div>
-        <div id="photos" class="tab-pane">
-          <h1>Photos</h1>
-          <hr>
-          <img src="photos/japan/03.jpg">
-          <img src="photos/japan/04.jpg">
-          <img src="photos/japan/09.jpg">
-          <img src="photos/japan/11.jpg">
-          <img src="photos/japan/12.jpg">
-          <img src="photos/japan/13.jpg">
-        </div>
-          <div id="misc" class="tab-pane active">
-            <h2>Listing All Galleries</h2>
-            <hr>
-
-            <div class="btn-toolbar">
-                <%= link_to "<i class=\"icon-plus icon-remove text-right\"></i>New Gallery".html_safe, new_gallery_path, :class => 'btn btn-success' %>
-            </div>
-            <div class="well">
-
-                <table class="table">
-                  
-                  <thead>
-                    <tr>
-                      <th>Title:</th>
-                      <th>Created At:</th>
-                      <th>Last Updated At:</th>
-                      <th style="width: 36px;"></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% @galleries.each do |gallery| %>
-                    <tr>
-                      <td><%= gallery.title %></td>
-                      <td><%= gallery.created_at %></td>
-                      <td><%= gallery.updated_at %></td>
-                      <td><%= link_to 'Preview', gallery %></td>
-                      <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-                      <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    </tr>
-                    <% end %>
-                  </tbody>
-                </table>
-            </div>
-
-            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3 id="myModalLabel">Delete Confirmation</h3>
+        <h3>Homepage Carousel Slideshow Pictures (Details)</h3>
+        <%= link_to "Add New Picture For Homepage", new_carousel_item_path, :class => 'btn btn-success' %>
+        <h6>Drag And Drop To Reorder</h6>
+        <ul class="sortable thumbnails" data-update-url="<%= sort_carousel_items_url %>"> 
+          <% @carousel_items.each do |item| %>
+            <li id="carousel_item_<%= item.id %>">
+              <div class="thumbnail">
+                <%= image_tag item.asset(:thumbnail) %>
+                <div class="caption">
+                  <%= link_to 'Edit', edit_carousel_item_path(item) %>
+                  <div class="pull-right">
+                    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+                  </div>
                 </div>
-                <div class="modal-body">
-                    <p class="error-text">Are you sure you want to delete the user?</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-                    <button class="btn btn-danger" data-dismiss="modal">Delete</button>
-                </div>
-            </div>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-             
-          </div>
+      <div id="manager" class="tab-pane active">
+        <h2>Listing All Galleries</h2>
+        <hr>
+        <div class="btn-toolbar">
+          <%= link_to "<i class=\"icon-plus icon-remove text-right\"></i>New Gallery".html_safe, new_gallery_path, :class => 'btn btn-success' %>
+        </div>
+        <div class="well">
+          <table class="table"> 
+            <thead>
+              <tr>
+                <th><%= sortable "title" %></th>
+                <th><%= sortable "created_at" %> |</th>
+                <th><%= sortable "updated_at" %> |</th>
+                <th style="width: 36px;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @galleries.each do |gallery| %>
+              <tr>
+                <td><%= gallery.title %></td>
+                <td><%= gallery.created_at %></td>
+                <td><%= gallery.updated_at %></td>
+                <td><%= link_to 'Preview', gallery %></td>
+                <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
+                <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>             
       </div>
     </div>
   </div>
+</div>
