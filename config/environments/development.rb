@@ -37,5 +37,9 @@ Mtsiran::Application.configure do
 
   #for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => "#{Rails.root}/config/s3.yml"
+  }
 end

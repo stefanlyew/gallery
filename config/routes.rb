@@ -4,7 +4,10 @@ Mtsiran::Application.routes.draw do
 	  get "sign_in", :to => "devise/sessions#new"
   end
 
-  root :to => 'welcome#carousel'
+  root :to => 'carousel_items#index'
+  resources :carousel_items, except: [:show] do
+    collection { post :sort }
+  end
   resources :artworks
   resources :galleries do
   	member { post :sort }

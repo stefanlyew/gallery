@@ -7,7 +7,7 @@ gem 'pg'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'aws-sdk'
-gem "aws-s3"
+gem 'aws-s3'
 gem 'devise'
 gem 'simple_form'
 gem 'unicorn'

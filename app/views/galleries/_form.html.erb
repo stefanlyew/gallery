@@ -4,80 +4,66 @@
 <script type="text/javascript">
   $(function() {
 
-      $.filtrify("balls", "placeHolder");
+      $.filtrify("filtrify", "placeHolder");
 
   });
 </script>
 <!-- END FILTRIFY ================== -->
+<div class="container">
+  <%= form_for(@gallery) do |f| %>
+    <!-- ERRORS MESSAGE -->
+    <% if @gallery.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
 
+        <ul>
+        <% @gallery.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="span3 fixme">
+        <h2>Editing gallery</h2>
+        <%= link_to 'Back To Index', galleries_path %> | 
+        <%= link_to 'Preview This Gallery', @gallery %>
 
-<%= form_for(@gallery) do |f| %>
-  <!-- ERRORS MESSAGE -->
-  <% if @gallery.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@gallery.errors.count, "error") %> prohibited this gallery from being saved:</h2>
-
-      <ul>
-      <% @gallery.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <%= f.label :title, 'Gallery Title' %>
+        <%= f.text_field :title %>
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+        <%= f.label :quote %>
+        <%= f.text_area :quote %>
+        <div class="well">                      
+          <%= f.label :featured, 'Featured On Front Page?' %>
+          <%= f.check_box :featured %>
+        </div>                      
+        <%= f.submit nil, class: 'btn btn-success' %>
+      </div>
+      <div class="span8 pull-right">           
+        <ul class="thumbnails" id="filtrify">
+          <div class="well" id=" filters">
+            Filter by:<div id="placeHolder"></div>
+          </div>
+          <% @artworks.each do |artwork| %>
+            <%= tag(:li, 
+              class: "span2", 
+              data: { :'category' => artwork.category,
+                      :'keyword' => artwork.tag_list,
+                      :'medium' => artwork.medium,
+                      :'year' => artwork.year }
+                      ) -%>
+            <div class="thumbnail">
+              <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+              <div class="caption">
+                <p><%= artwork.title -%></p>
+                <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
-  <!-- ERRORS MESSAGE -->
-  <div class="main">
-      <div class="box">
-          <div class="row-fluid">
-              <div class="column span3">
-                <ul class="nav nav-list nav-fixed-sidebar">
-                  <h2>Editing gallery</h2>
-                    <%= link_to 'Back To Index', galleries_path %> | 
-                    <%= link_to 'Preview This Gallery', @gallery %>
-
-                        <%= f.label :title, 'Gallery Title' %>
-                        <%= f.text_field :title %>
-                        <%= f.label :description %>
-                        <%= f.text_area :description %>
-                        <%= f.label :quote %>
-                        <%= f.text_area :quote %>
-                        <div class="well">                      
-                          <%= f.label :featured, 'Featured On Front Page?' %>
-                          <%= f.check_box :featured %>
-                        </div>                      
-                        <%= f.submit 'Update Settings for this Gallery', :class => 'btn btn-success' %>
-                </ul>
-              </div>
-              <div class="column span9">
-                  <div class="padding">
-                      <div class="full span9" id="balls">
-                        <div class="well" id=" filters">
-                          Filter by:<div id="placeHolder"></div>
-                        </div>
-                          <% @artworks.each do |artwork| %>
-                            <%= tag(:li, 
-                              class: "span2", 
-                              data: { :'category' => artwork.category,
-                                      :'keyword' => artwork.tag_list,
-                                      :'medium' => artwork.medium,
-                                      :'year' => artwork.year }
-                                      ) -%>
-
-                            <div class="thumbnail">
-                              <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
-                              <div class="caption">
-                                <p><%= artwork.title -%></p>
-                                  <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
-                              </div>
-                            </div>
-                          <% end %>
-                        </div>
-                        </ul>
-                        </div>
-                      </div>  
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-<% end %>
-
+</div>

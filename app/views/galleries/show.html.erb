@@ -1,5 +1,8 @@
-<div class="container">
   <% if admin_signed_in? %>
+  <br/>
+  <br/>
+  <br/>
+  <br/>
   <h4>Drag And Drop To Reorder Art Pieces</h4>
   <%= link_to 'Galleries', galleries_path %> |
   <%= link_to 'Edit', edit_gallery_path(@gallery) %>
@@ -39,7 +42,7 @@
         var
           options = {
             captionAndToolbarFlipPosition: true,
-            captionAndToolbarAutoHideDelay: 0
+            captionAndToolbarAutoHideDelay: 0,
           },
           instance = PhotoSwipe.attach( window.document.querySelectorAll('.thumbnails a'), options );
       

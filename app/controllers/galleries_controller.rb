@@ -4,6 +4,7 @@ class GalleriesController < ApplicationController
   # GET /galleries.json
   def index
     @galleries = Gallery.all
+    @carousel_items = CarouselItem.order("position").all #named
 
     respond_to do |format|
       format.html # index.html.erb

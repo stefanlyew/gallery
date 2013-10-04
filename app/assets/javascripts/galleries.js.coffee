@@ -3,14 +3,8 @@
 # You can use CoffeeScript in this file
 
 jQuery ->
-  $('#sortable').sortable(
+  $('.sortable').sortable(
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
 
   );
-
-jQuery ->
-  $('#featuredsort').sortable
-    axis: 'y'
-    update: ->
-      $.post($(this).data('update-url'), $(this).sortable('serialize'))

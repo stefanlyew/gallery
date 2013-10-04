@@ -1,0 +1,21 @@
+ <%= simple_form_for(@carousel_item) do |f| %>
+  <%= f.error_notification %>
+    <fieldset>
+      <legend>Upload Image: Optimal Size is 2048x1024</legend>
+    <%= f.input :asset, as: :file, :label => "Image.  Might Take A Second to Upload Big File" %>
+    <% if f.object.asset? %>
+      <div class="control-group">
+        <label class="control-label">Current Image</label>
+      <div class="controls">
+      <%= image_tag f.object.asset(:thumbnail) %>
+    <% end %>
+    <br />
+    <%= f.input :name %>
+    <%= f.input :caption %>
+    </fieldset>  
+ 
+  <div class="actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to "Back", galleries_path, class: 'btn' %>
+  </div>
+<% end %>

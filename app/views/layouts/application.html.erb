@@ -21,7 +21,12 @@
   <meta name="author" content="Stefan Lyew">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+
+<% if admin_signed_in? %>
+  <body style="padding-top: 100px;">
+<% else %>
+  <body>
+<% end %>
    <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
@@ -53,12 +58,18 @@
   </div>
   <!-- end navbar -->
 
-      <%= bootstrap_flash %>
+    <%= bootstrap_flash %>
+    <% if current_page?(root_path) %>
+      <div>
+    <% else %>
+      <div class="container">
+    <% end %>
       <%= yield %>
-    <!-- <footer>
-      <p>&copy; Margaret Tsirantonakis 2013 </p>
-    </footer> 
-  --> 
-
+    </div>
+    <% unless admin_signed_in? %>
+      <footer>
+        <p>&copy; Margaret Tsirantonakis <%= Time.now.year %> </p>
+      </footer>  
+    <% end %>
 </body>
 </html>

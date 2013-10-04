@@ -159,46 +159,16 @@ body{
 
 /* bootstrap overrides */
 
-html, body {
-    height: 100%;
-}
-
-.main, .row-fluid {
-    height: 100%;
-}
-
-.main:before, .main:after,
-.column:before, .column:after {
-    content: "";
-    display: table;
-}
-
-.main:after,
-.column:after {
-    clear: both;
-}
-
-.column {
-    height: 100%;
-    overflow: auto;
-    *zoom:1;
-}
-
-.column .padding {
-    padding: 20px;
-}
-
-.box {
-    bottom: 0; /* increase for footer use */
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 40px;
-}
-
-.span9.full {
-    width: 100%;
-}
+    .fixme { 
+        padding: 9px 0;
+        position: fixed; 
+        position:fixed;
+        top:60px;
+    }
+    /* Landscape phone to portrait tablet */
+    @media (max-width: 767px) {
+      .fixme { width: 100%; position: static; }
+    }
 
 textarea {
   height: 80px;
