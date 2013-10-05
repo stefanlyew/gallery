@@ -38,7 +38,12 @@
         <div class="well">                      
           <%= f.label :featured, 'Featured On Front Page?' %>
           <%= f.check_box :featured %>
-        </div>                      
+        </div>  
+        </br>
+        <div class="well">                      
+          <%= f.label :archived, 'Put Gallery In Archive?' %>
+          <%= f.check_box :archived %>
+        </div>                            
         <%= f.submit nil, class: 'btn btn-success' %>
       </div>
       <div class="span8 pull-right">           

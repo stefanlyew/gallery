@@ -2,11 +2,21 @@ class GalleriesController < ApplicationController
   before_filter :authenticate_admin!, :except => :show 
   # GET /galleries
   # GET /galleries.json
-  def index
-    @galleries = Gallery.order(sort_column + " " + sort_direction).all
+  def index    
     @carousel_items = CarouselItem.order("position").all #named
     @profile = Profile.last
+    @galleries = Gallery.order(sort_column + " " + sort_direction).all
 
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @galleries }
+    end
+  end
+
+  def archive
+    @galleries = Gallery.archived.all
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @galleries }
@@ -104,8 +114,15 @@ class GalleriesController < ApplicationController
        Gallery.update_all({position: index+1}, {id: id})
     end
     render nothing: true
-    end
   end
+
+  def archivedsort
+    params[:gallery].each_with_index do |id, index|
+    Gallery.update_all({archiveposition: index+1}, {id: id})
+    end
+    render nothing: true
+  end
+end
 
 private
 

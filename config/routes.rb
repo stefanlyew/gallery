@@ -13,6 +13,8 @@ Mtsiran::Application.routes.draw do
   resources :galleries do
   	member { post :sort }
   	collection { post :featuredsort }
+    collection { post :archivedsort }
+    collection { get :archive }
   end
 
 
