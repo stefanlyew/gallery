@@ -25,7 +25,6 @@
     <% end %>
     <div class="row">
       <div class="span3 fixme">
-        <h2>Editing gallery</h2>
         <%= link_to 'Back To Galleries', galleries_path %> | 
         <%= link_to 'Preview This Gallery', @gallery %>
 
@@ -39,7 +38,6 @@
           <%= f.label :featured, 'Featured On Front Page?' %>
           <%= f.check_box :featured %>
         </div>  
-        </br>
         <div class="well">                      
           <%= f.label :archived, 'Put Gallery In Archive?' %>
           <%= f.check_box :archived %>

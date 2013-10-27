@@ -11,7 +11,7 @@ end
 namespace :deploy  do
 	task :install do
 		run "#{sudo} apt-get -y update"
-		run "#{sudo} apt-get -y install vim curl git-core software-properties-common"
+		run "#{sudo} apt-get -y install vim curl git-core software-properties-common imagemagick libmagickcore-dev libmagickwand-dev"
 	end
 end
 
