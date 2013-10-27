@@ -21,4 +21,7 @@ class Artwork < ActiveRecord::Base
     "\"#{title}\", #{year}. #{medium}. #{size}. Margaret Tsirantonakis. " 
   end
 
+  def price
+     "$%.2f" % self[:price]
+  end
 end
