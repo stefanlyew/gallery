@@ -22,6 +22,6 @@ class Artwork < ActiveRecord::Base
   end
 
   def price
-     "$%.2f" % self[:price]
+     "$%.2f" % self[:price] if self[:price]
   end
 end
