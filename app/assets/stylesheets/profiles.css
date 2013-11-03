@@ -3,6 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #accordion h4:hover { /* change to blue on mouseover */
-       color: #3C928C;
+       color: #000;
 }
 
