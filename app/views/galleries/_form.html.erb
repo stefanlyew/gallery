@@ -25,9 +25,11 @@
     <% end %>
     <div class="row">
       <div class="span3 fixme">
+      
         <%= link_to 'Back To Galleries', galleries_path %> | 
         <%= link_to 'Preview This Gallery', @gallery %>
-
+        </br>
+        </br>
         <%= f.label :title, 'Gallery Title' %>
         <%= f.text_field :title %>
         <%= f.label :description %>
