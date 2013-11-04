@@ -25,30 +25,32 @@
 		</div>
 	</div>
 	<br/>
-	<div class="span6">
-		<p><%= @profile.statement %></p>
-	</div>
-	<div class="span5">
-    <div id="accordion">
-      <h4 class="profile">Ongoing and Upcoming Shows</h4>
-      <div>
-        <p><%= @profile.news %></p>
-      </div>
-      <h4 class="profile">Recent Exhibits</h4>
-      <div>
-        <p><%= @profile.recent_exhibits %> </p>
-      </div>
-      <h4 class="profile">Bibliography/Essays</h4>
-      <div>
-        <p><%= @profile.bibliography %></p>
-      </div>
-      <h4 class="profile">Contact Info</h4>
-      <div>
-        <p><%= @profile.contact %></p>
-      </div>
+	<div class="row">
+    <div class="span4 offset1">
+      <p><%= @profile.statement %></p>
     </div>
-    <div><%= link_to "Resume (PDF)", @profile.resume.url,
-      :target => "_blank", class: "profile" %>
+    <div class="span4 offset2">
+      <div id="accordion">
+        <h4 class="profile">Ongoing and Upcoming Shows</h4>
+        <div>
+          <p><%= @profile.news %></p>
+        </div>
+        <h4 class="profile">Recent Exhibits</h4>
+        <div>
+          <p><%= @profile.recent_exhibits %> </p>
+        </div>
+        <h4 class="profile">Bibliography/Essays</h4>
+        <div>
+          <p><%= @profile.bibliography %></p>
+        </div>
+        <h4 class="profile">Contact Info</h4>
+        <div>
+          <p><%= @profile.contact %></p>
+        </div>
+      </div>
+      <div><%= link_to "Resume (PDF)", @profile.resume.url,
+        :target => "_blank", class: "profile" %>
+      </div>
     </div>
   </div>
 </div>
