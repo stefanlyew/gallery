@@ -46,9 +46,9 @@
       <div>
         <p><%= @profile.contact %></p>
       </div>
-      <h4 class="profile">Resume (PDF)</h4>
     </div>
-    
+    <div><%= link_to "Resume (PDF)", @profile.resume.url,
+      :target => "_blank", class: "profile" %>
+    </div>
   </div>
 </div>
-	</div>

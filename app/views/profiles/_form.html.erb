@@ -25,7 +25,7 @@
   <div class="span5">
      <%= f.input :resume, as: :file, :label => "Upload Resume PDF" %>
      <% if @profile.resume? %>
-       <%= image_tag @profile.resume %>
+       <%= link_to "Current Resume Attached", @profile.resume.url %>
      <% end %>
      <%= f.input :news %>
      <%= f.input :recent_exhibits %>
