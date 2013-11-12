@@ -58,7 +58,7 @@ class ArtworksController < ApplicationController
 
   # PUT /artworks/1
   # PUT /artworks/1.json
-  def update
+  def update(new = nil)
     @artwork = Artwork.find(params[:id])
 
     respond_to do |format|

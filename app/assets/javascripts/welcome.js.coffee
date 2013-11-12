@@ -1,4 +1,8 @@
 jQuery ->
   $(document).ready( ->
-    $('.carousel').carousel();
+    $('.carousel').carousel({
+      interval: 2500,
+      pause: "false"
+    });
   )
+

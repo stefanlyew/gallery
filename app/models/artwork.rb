@@ -1,11 +1,17 @@
 class Artwork < ActiveRecord::Base
   attr_accessible :medium, :price, :size, :title, :year, :asset, :category, :gallery_ids, :notes, :tag_list, :datesold, :soldto, :sold
   has_attached_file :asset, styles: { thumbnail: "300x200#" }
+  #todo add style resize but don't crop
+
   has_many :curatings, dependent: :destroy
   has_many :galleries, through: :curatings
   has_many :taggings
   has_many :tags, through: :taggings
   before_save { |artwork| artwork.medium = medium.chomp(' ').chomp('.').chomp(' ').chomp('.') }
+
+  def filename
+    asset.instance_read(:file_name)
+  end
 
   def tag_list
     tags.join(", ")
