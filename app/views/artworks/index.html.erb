@@ -1,5 +1,9 @@
-<h2 class="page-title">My Catalog of All Artworks</h2>
-<%= link_to "<i class=\"icon-picture icon-remove text-right\"></i>New Artwork".html_safe, new_artwork_path, :class => 'btn btn-success' %>
+<div class="row-fluid">
+  <h3 class="pull-left">My Catalog of All Artworks</h3>
+  <div class="actions pull-right">
+    <%= link_to "New Artwork", new_artwork_path, :class => 'btn btn-success' %>
+  </div>
+</div>
 <br />
 <br />
 <form>  

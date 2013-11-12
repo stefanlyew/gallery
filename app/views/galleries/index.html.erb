@@ -29,7 +29,7 @@
         </ol>
         <br />
 
-        <h3>Homepage Carousel Slideshow Pictures (Details)</h3>
+        <h2>Homepage Carousel Slideshow Pictures (Details)</h2>
         <%= link_to "Add New Picture For Homepage", new_carousel_item_path, :class => 'btn btn-success' %>
         <h6>Drag And Drop To Reorder</h6>
         <ul class="sortable thumbnails" data-update-url="<%= sort_carousel_items_url %>"> 
@@ -62,6 +62,7 @@
                 <th><%= sortable "title" %></th>
                 <th><%= sortable "created_at" %></th>
                 <th><%= sortable "updated_at" %></th>
+                <th>Number of Works</th>
                 <th style="width: 36px;"></th>
               </tr>
             </thead>
@@ -71,6 +72,7 @@
                 <td><%= gallery.title %></td>
                 <td><%= gallery.created_at.to_s(:post_time) %></td>
                 <td><%= gallery.updated_at.to_s(:post_time) %></td>
+                <td><%= gallery.artworks.size %></td>
                 <td><%= link_to 'Preview', gallery %></td>
                 <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
                 <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -78,7 +80,7 @@
               <% end %>
             </tbody>
           </table>
-        </div>             
+        </div>
       </div>
     </div>
   </div>

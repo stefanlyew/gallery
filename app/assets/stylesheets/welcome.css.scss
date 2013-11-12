@@ -2,16 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .carousel .carousel-control { visibility: hidden; }
-.carousel:hover .carousel-control { visibility: visible; }
-
-body {
-  padding: 0;
-  padding-top: 0;
-}
+.carousel:hover .carousel-control { visibility: hidden; }
 
 @media (max-width: 979px) {
-.navbar-fixed-top {
-margin-bottom: 0px;
-}
+  .navbar-fixed-top {
+    margin-bottom: 0px;
+  }
+  body {
+    padding: 0;
+  }
 }
 
