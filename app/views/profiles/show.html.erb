@@ -1,12 +1,3 @@
-	 <script>
-  $(function() {
-    $( "#accordion" ).accordion({
-      collapsible: true,
-      active: false
-    });
-  });
-  </script>
-
   <br/>
 	<br/>
 	<div class="row">
@@ -28,16 +19,17 @@
 	<div class="row">
     <div class="span4 offset1">
       <p><%= @profile.statement %></p>
+<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
     </div>
     <div class="span4 offset2">
       <div id="accordion">
-        <h4 class="profile">Ongoing and Upcoming Shows</h4>
+        <h4 class="profile">Upcoming Exhibitions & News</h4>
         <div>
-          <p><%= @profile.news %></p>
+          <p><%= raw(@profile.news) %></p>
         </div>
         <h4 class="profile">Recent Exhibits</h4>
         <div>
-          <p><%= @profile.recent_exhibits %> </p>
+          <p><%= raw(@profile.recent_exhibits) %> </p>
         </div>
         <h4 class="profile">Bibliography/Essays</h4>
         <div>

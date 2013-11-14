@@ -1,14 +1,3 @@
-<!-- autocomplete plugin -->
-<script>
-    $(function(){
-        var sampleTags = $('#tagit').data('keywords');
-        $('#tagit').tagit({
-            availableTags: sampleTags
-        });
-      });
-</script>
-<!-- end autocomplete plugin -->
-
 <%= simple_form_for(@artwork) do |f| %>
   <%= f.error_notification %>
   <div class="row-fluid">

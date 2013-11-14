@@ -15,10 +15,9 @@
   <br/>
   <!-- <h2 class="page-title"><%= @gallery.title %></h2> -->
   <!-- Thumbnail ul sortable only if signed in -->
-  <%= content_tag( :ul, 
-                   class: "thumbnails", 
-                   data: { :'update-url' => sort_gallery_path(@gallery) }, 
-                   id: (admin_signed_in?) ? 'sortable' : nil
+  <%= content_tag( :ul,
+                   data: { :'update-url' => sort_gallery_path(@gallery) },
+                   class: (admin_signed_in?) ? 'thumbnails sortable' : 'thumbnails'
                   ) do -%>
     <% @artworks.each do |artwork| %>
       <li class="span2" id="artwork_<%= artwork.id %>"> <!-- need id of model -->
