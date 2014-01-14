@@ -4,6 +4,8 @@ gem 'rails', '~> 3.2.13'
 gem 'jquery-rails', "~> 2.3.0"
 
 gem 'pg'
+
+gem 'redcarpet'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'aws-sdk'

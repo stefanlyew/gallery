@@ -2,7 +2,7 @@
 	<br/>
 	<div class="row">
 		<div class="span12">
-			<h4 class="profile"><%= @profile.quote %></h4>
+			<h4 class="profile"><%= markdown @profile.quote %></h4>
 		</div>
 	</div>
 	<br/>
@@ -18,26 +18,25 @@
 	<br/>
 	<div class="row">
     <div class="span4 offset1">
-      <p><%= @profile.statement %></p>
-<a href="http://www.w3schools.com">Visit W3Schools.com!</a>
+      <p><%= markdown @profile.statement %></p>
     </div>
     <div class="span4 offset2">
       <div id="accordion">
         <h4 class="profile">Upcoming Exhibitions & News</h4>
         <div>
-          <p><%= raw(@profile.news) %></p>
+          <p><%= markdown @profile.news %></p>
         </div>
         <h4 class="profile">Recent Exhibits</h4>
         <div>
-          <p><%= raw(@profile.recent_exhibits) %> </p>
+          <p><%= markdown @profile.recent_exhibits %> </p>
         </div>
         <h4 class="profile">Bibliography/Essays</h4>
         <div>
-          <p><%= @profile.bibliography %></p>
+          <p><%= markdown @profile.bibliography %></p>
         </div>
         <h4 class="profile">Contact Info</h4>
         <div>
-          <p><%= @profile.contact %></p>
+          <p><%= markdown @profile.contact %></p>
         </div>
       </div>
       <div><%= link_to "Resume (PDF)", @profile.resume.url,
