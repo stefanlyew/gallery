@@ -18,3 +18,5 @@
 //= require klass.min
 //= require code.photoswipe-3.0.5.min
 //= require_tree .
+
+$('.dropdown-toggle').dropdown()
