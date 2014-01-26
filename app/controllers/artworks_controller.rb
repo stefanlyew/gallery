@@ -47,8 +47,11 @@ class ArtworksController < ApplicationController
 
     respond_to do |format|
       if @artwork.save
-        format.html { redirect_to @artwork, notice: 'Artwork was successfully created.' }
-        format.json { render json: @artwork, status: :created, location: @artwork }
+        format.html { render :json => [@artwork.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+        }
+        format.json { render json: {files: [@artwork.to_jq_upload] }}
       else
         format.html { render action: "new" }
         format.json { render json: @artwork.errors, status: :unprocessable_entity }

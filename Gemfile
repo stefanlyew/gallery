@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2.13'
-gem 'jquery-rails', "~> 2.3.0"
+gem 'rails', '~> 3.2.8'
+gem 'jquery-rails', "< 2.1.0"
 
 gem 'pg'
 
@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'unicorn'
 gem 'capistrano'
 gem 'rvm-capistrano'
+gem 'jquery-fileupload-rails'
 
 
 #gem 'jquery-ui-rails'

@@ -1,5 +1,7 @@
 class Artwork < ActiveRecord::Base
   attr_accessible :medium, :price, :size, :title, :year, :asset, :category, :gallery_ids, :notes, :tag_list, :datesold, :soldto, :sold
+  attr_accessible :asset_content_type, :asset_file_name, :asset_file_size, :asset_updated_at, :asset
+
   has_attached_file :asset, styles: { thumbnail: "300x200#" }
   #todo add style resize but don't crop
 
@@ -7,7 +9,7 @@ class Artwork < ActiveRecord::Base
   has_many :galleries, through: :curatings
   has_many :taggings
   has_many :tags, through: :taggings
-  before_save { |artwork| artwork.medium = medium.chomp(' ').chomp('.').chomp(' ').chomp('.') }
+  before_save { |artwork| artwork.medium = medium.to_s.chomp(' ').chomp('.').chomp(' ').chomp('.') }
 
   def filename
     asset.instance_read(:file_name)
@@ -29,5 +31,16 @@ class Artwork < ActiveRecord::Base
 
   def price
      "$%.2f" % self[:price] if self[:price]
+  end
+
+  def to_jq_upload
+    {
+      "name" => read_attribute(:asset_file_name),
+      "size" => read_attribute(:asset_file_size),
+      "url" => asset.url(:original),
+      "thumbnail_url" => asset.url(:thumb),
+      "delete_url" => "/artworks/#{self.id}",
+      "delete_type" => "DELETE" 
+    }
   end
 end
