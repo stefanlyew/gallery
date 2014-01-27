@@ -18,6 +18,11 @@
 //= require tag-it.min
 //= require klass.min
 //= require code.photoswipe-3.0.5.min
-//= require_tree .
+//= require artworks
+//= require bootstrap
+//= require galleries
+//= require profiles
+//= require welcome
+//= require filtrify
 
 $('.dropdown-toggle').dropdown()
