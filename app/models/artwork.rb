@@ -1,8 +1,9 @@
 class Artwork < ActiveRecord::Base
   attr_accessible :medium, :price, :size, :title, :year, :asset, :category, :gallery_ids, :notes, :tag_list, :datesold, :soldto, :sold
   attr_accessible :asset_content_type, :asset_file_name, :asset_file_size, :asset_updated_at, :asset
-
-  has_attached_file :asset, styles: { thumbnail: "300x200#" }
+  before_create :default_title
+  
+ has_attached_file :asset, styles: { thumbnail: "300x200#" }
   #todo add style resize but don't crop
 
   has_many :curatings, dependent: :destroy
@@ -13,6 +14,11 @@ class Artwork < ActiveRecord::Base
 
   def filename
     asset.instance_read(:file_name)
+  end
+
+  def default_title
+    self.title ||= File.basename(filename, '.*').titleize if asset
+    self.title = File.basename(filename, '.*').titleize if asset && self.title.empty?
   end
 
   def tag_list
@@ -43,4 +49,5 @@ class Artwork < ActiveRecord::Base
       "delete_type" => "DELETE" 
     }
   end
+
 end

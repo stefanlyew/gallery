@@ -36,8 +36,10 @@
               <%= link_to "<i class=\"icon-large icon-remove text-error text-right\"></i>Delete".html_safe, artwork, method: :delete, data: { confirm: 'Are you sure?' } %>
               <br/>
               <%= link_to "<i class=\"icon-large icon-edit text-success text-right\"></i>Edit".html_safe, edit_artwork_path(artwork) %>
+              <%= check_box_tag "artwork_ids[]", artwork.id %>
           </div>
         </div>
       <% end %>
   </ul>
 </div>  
+

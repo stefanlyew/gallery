@@ -47,10 +47,7 @@ class ArtworksController < ApplicationController
 
     respond_to do |format|
       if @artwork.save
-        format.html { render :json => [@artwork.to_jq_upload].to_json, 
-          :content_type => 'text/html',
-          :layout => false
-        }
+        format.html { redirect_to artworks_url, notice: 'Artwork was successfully created.' }
         format.json { render json: {files: [@artwork.to_jq_upload] }}
       else
         format.html { render action: "new" }
@@ -84,6 +81,23 @@ class ArtworksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to artworks_url }
       format.json { head :no_content }
+    end
+  end
+
+  def edit_multiple
+    @artworks = Artwork.find(params[:artwork_ids])
+  end
+
+  def update_multiple
+    @artworks = Artwork.find(params[:artwork_ids])
+    @artworks.reject! do |artwork|
+      puts "***#{artwork}***"
+      artwork.update_attributes(params[:artwork].reject { |k,v| v.blank? })
+    end
+    if @artworks.empty?
+      redirect_to artworks_url
+    else
+      render "edit_multiple"
     end
   end
 

@@ -9,7 +9,12 @@ Mtsiran::Application.routes.draw do
   resources :carousel_items, except: [:show] do
     collection { post :sort }
   end
-  resources :artworks
+  resources :artworks do
+    collection do
+      get :edit_multiple
+      put :update_multiple
+    end
+  end
   resources :galleries do
   	member { post :sort }
   	collection { post :featuredsort }

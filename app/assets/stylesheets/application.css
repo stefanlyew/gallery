@@ -10,7 +10,6 @@
  *
  *= require_self
  *= require jquery.fileupload-ui
- *= require bootstrap-image-gallery.min.css
  *= require_tree .
  */
 ul.ui-autocomplete {

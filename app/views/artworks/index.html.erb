@@ -1,18 +1,5 @@
-<div class="row-fluid">
-  <h3 class="pull-left">My Catalog of All Artworks</h3>
-  <div class="actions pull-right">
-    <%= link_to "New Artwork", new_artwork_path, :class => 'btn btn-success' %>
-  </div>
-</div>
-<br />
-<br />
-<form>
-	<%= render 'catalog' %>
-</form>
-
-
 <div class="container">
-  <h2>Upload files</h2>
+  <h3>Upload Multiple Artworks</h3>
   <%= form_for Artwork.new, :html => { :multipart => true, :id => "fileupload"  } do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
@@ -38,7 +25,7 @@
           <div class="bar" style="width:0%;"></div>
         </div>
       </div>
-      <div style="height: 200px; background-color: gray;" class="span10"><p>Drag Files Here</p></div>
+      <div style="height: 180px; background-color: gray;" class="span12"><p>Drag Files Here</p></div>
     </div>
     <!-- The loading indicator is shown during image processing -->
     <div class="fileupload-loading"></div>
@@ -49,6 +36,18 @@
   <% end %>
 
 </div><!-- container -->
+
+
+<div class="row-fluid">
+  <h2>My Catalog of All Artworks</h2>
+  <%= form_tag edit_multiple_artworks_path, method: :get do %>
+  <div class="actions">
+    <%= link_to "New Artwork", new_artwork_path, :class => 'btn btn-success' %>
+    <%= submit_tag "Edit Checked", class: 'btn-primary' %> 
+  </div>
+</div>
+	<%= render 'catalog' %>
+<% end %>
 
 <%= javascript_include_tag "jquery-fileupload" %>
 
