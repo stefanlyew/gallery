@@ -1,11 +1,12 @@
 class GalleriesController < ApplicationController
-  before_filter :authenticate_admin!, :except => :show 
+  before_filter :authenticate_admin!, :except => [:show, :archive] 
   # GET /galleries
   # GET /galleries.json
   def index    
     @carousel_items = CarouselItem.order("position").all #named
     @profile = Profile.last
     @galleries = Gallery.order(sort_column + " " + sort_direction).all
+    @navs = Nav.all
 
 
     respond_to do |format|

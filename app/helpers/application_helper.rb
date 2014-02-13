@@ -10,9 +10,13 @@ module ApplicationHelper
 		Tag.all.map(&:name)
 	end
 
-    def featured_galleries
-		Gallery.featured.all
-    end
+  def featured_galleries
+    Gallery.featured.all
+  end
+
+  def featured_navs
+    Nav.featured.all
+  end
 
 	def nav_entry(body, path)
 		content_tag(:li, link_to(body, path), class: ('active' if current_page?(path)))

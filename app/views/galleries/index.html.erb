@@ -17,17 +17,38 @@
   <div class="span8 well pull-right">
     <div class="tab-content">
       <div id="site" class="tab-pane">
-        <h2>Navigation Bar Featured galleries</h2>
+        <h2>Navigation Bar Featured Items</h2>
+        <%= link_to 'New Navigation Grouping Category', new_nav_path, class: 'btn' %>
         <h6>Drag And Drop To Reorder(will update on page refresh)</h6>
-        <ol class="sortable" data-update-url="<%= featuredsort_galleries_url %>"> 
-          <% featured_galleries.each do |gallery| %>
-            <li id="gallery_<%= gallery.id %>"><%= gallery.title %>
-              <%= link_to 'Edit', edit_gallery_path(gallery) %>
+        <ol class="sortable" data-update-url="<%= featuredsort_navs_url %>"> 
+          <% featured_navs.each do |nav| %>
+            <li id="nav_<%= nav.id %>"><%= nav.title %>
+              <%= link_to 'Edit', edit_nav_path(nav) %>
               <!-- <%= link_to 'Remove From Featured' %> -->
             </li>
           <% end %>
         </ol>
         <br />
+
+<h3>All navs</h3>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @navs.each do |nav| %>
+  <tr>
+    <td><%= nav.title %></td>
+    <td><%= link_to 'Edit', edit_nav_path(nav) %></td>
+    <td><%= link_to 'Destroy', nav, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
 
         <h2>Homepage Carousel Slideshow Pictures (Details)</h2>
         <%= link_to "Add New Picture For Homepage", new_carousel_item_path, :class => 'btn btn-success' %>

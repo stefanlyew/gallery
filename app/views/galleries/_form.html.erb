@@ -34,6 +34,8 @@
         <%= f.text_area :description, class: "smallertext" %>
         <%= f.label :quote, "Text" %>
         <%= f.text_area :quote, class: "smallertext" %>
+        <%= f.label :nav_id, "Navigation Category" %>
+        <%= f.collection_select :nav_id, Nav.all, :id, :title, include_blank: true %>
         <div class="well">                      
           <%= f.label :featured, 'Featured On Navigation Bar?' %>
           <%= f.check_box :featured %>

@@ -1,4 +1,8 @@
 Mtsiran::Application.routes.draw do  
+  resources :navs do
+  	collection { post :featuredsort }
+  end
+
   devise_for :admins
   devise_scope :admin do
 	  get "sign_in", :to => "devise/sessions#new"

@@ -1,0 +1,16 @@
+<%= simple_form_for(@nav) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+  </div>
+
+  <div class="well">                      
+    <%= f.input :featured %>
+  </div>  
+
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

@@ -1,46 +1,23 @@
 <div class="row tabbable">
-		<div class="span3 fixme">
-			<% if admin_signed_in? %>
-			  <br/>
-			  <br/>
-			  <br/>
-			  <br/>
-			  <h4>Drag And Drop To Reorder Art Pieces</h4>
-			  <%= link_to 'Back to My Galleries', galleries_path %> 
-			<% end %>      
-			<h1>Static Sidebar</h1>
-			<hr>
-			<p>Choose a tab, then scroll to see the effect! </p>
-		</div>
-		<div class="span8 well pull-right">
+	<div class="span12 well pull-right">
 			<div class="tab-content">
 				<div id="blog" class="tab-pane active">
 					<h1>Gallery Archive</h1>
 					<hr>
-			  <%= content_tag( :ul, 
-	           class: (admin_signed_in?) ? 'sortable' : nil, 
-	           data: { :'update-url' => archivedsort_galleries_url }
-	          ) do -%>
+			  <%= content_tag(:ul) do -%>
 		            <% @galleries.each do |gallery| %>
-		            <% if admin_signed_in? %>
-		            <a href="#{gallery_path(gallery)}">
-	            	<% else %>
-	            	<a>
-	            	<% end %>
 		            <li id="gallery_<%= gallery.id %>">       
-							<h2><%= gallery.title %> </h2>
+                <h2><%= link_to gallery.title, gallery_path(gallery) %> </h2>
 					    <p><%= gallery.description %></p>
     		            <ul class="thumbnails">
     		            <% gallery.artworks.first(4).each do |artwork| %>
 	    		            <li class="span2" id="artwork_<%= artwork.id %>">
 	    		            	<%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption) %>
 	    		            </li>
-	    		            </a>
     		            <% end %>
 						</ul>
 					    <div>
-					        <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span><div class="pull-right"><span class="label">alice</span> <span class="label">story</span> <span class="label">blog</span> <span class="label">personal</span></div>
-					    </div> 
+					        <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span>					    </div> 
 					    <hr>
 				    </li>
 				    <% end %>

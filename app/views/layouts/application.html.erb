@@ -44,26 +44,28 @@
         <% end %>
         <div class="nav-collapse">
           <ul class="nav">
-            <% featured_galleries.each do |gallery| %>
-              <li><%= nav_entry gallery.title, gallery_path(gallery) %></li>
+            <%# <% featured_galleries.each do |gallery| %>
+            <%#   <li><%= nav_entry gallery.title, gallery_path(gallery) %></li>
+            <%# <% end %>
+            <% featured_navs.each do |nav| %>
+              <li class="dropdown">
+                <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= nav.title %><b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
+                <% nav.galleries.each do |gallery| %>
+                  <li role="presentation"><%= link_to gallery.title, gallery_path(gallery) %></li>
+                <% end %>
+                </ul>
+              </li>
             <% end %>
+	
 	          <li><%= nav_entry "Profile", profile_path(profile_id) %></li>
+	          <li><%= nav_entry "Archive", archive_galleries_path %></li>
             <% if admin_signed_in? %>
               <li><%= nav_entry "My Catalog", artworks_path %></li>
               <li><%= nav_entry "My Galleries", galleries_path %></li>
               <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete %></li>
             <% end %>
-          <li class="dropdown">
-              <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown">Dropdown 2 <b class="caret"></b></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another action</a></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Something else here</a></li>
-                <li role="presentation" class="divider"></li>
-                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Separated link</a></li>
-              </ul>
-            </li>
-   
+  
           </ul>
         </div>
       </div>
