@@ -3,25 +3,29 @@
 			<div class="tab-content">
 				<div id="blog" class="tab-pane active">
 					<h1>Gallery Archive</h1>
-					<hr>
+
 			  <%= content_tag(:ul) do -%>
 		            <% @galleries.each do |gallery| %>
-		            <li id="gallery_<%= gallery.id %>">       
-                <h2><%= link_to gallery.title, gallery_path(gallery) %> </h2>
+
+                <%= link_to(gallery_path(gallery)) do %> 
+                <h2><%= gallery.title %> </h2>
 					    <p><%= gallery.description %></p>
     		            <ul class="thumbnails">
-    		            <% gallery.artworks.first(4).each do |artwork| %>
+    		            <% gallery.artworks.first(5).each do |artwork| %>
 	    		            <li class="span2" id="artwork_<%= artwork.id %>">
 	    		            	<%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption) %>
 	    		            </li>
     		            <% end %>
+
 						</ul>
 					    <div>
 					        <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span>					    </div> 
 					    <hr>
-				    </li>
+
+    		            <% end %>
 				    <% end %>
 				<% end %>
+
 	    		</div>
 			</div>
 		</div>

@@ -1,14 +1,16 @@
 Mtsiran::Application.routes.draw do  
-  resources :navs do
-  	collection { post :featuredsort }
-  end
+  root :to => 'carousel_items#index'
 
   devise_for :admins
   devise_scope :admin do
 	  get "sign_in", :to => "devise/sessions#new"
   end
 
-  root :to => 'carousel_items#index'
+  resources :navs, except: [:show, :index] do
+  	collection { post :featuredsort }
+  end
+
+
   resources :profiles, only: [:show, :edit, :update]
   resources :carousel_items, except: [:show] do
     collection { post :sort }

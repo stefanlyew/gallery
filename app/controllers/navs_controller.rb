@@ -1,26 +1,4 @@
 class NavsController < ApplicationController
-  # GET /navs
-  # GET /navs.json
-  def index
-    @navs = Nav.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @navs }
-    end
-  end
-
-  # GET /navs/1
-  # GET /navs/1.json
-  def show
-    @nav = Nav.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @nav }
-    end
-  end
-
   # GET /navs/new
   # GET /navs/new.json
   def new
@@ -44,7 +22,7 @@ class NavsController < ApplicationController
 
     respond_to do |format|
       if @nav.save
-        format.html { redirect_to @nav, notice: 'Nav was successfully created.' }
+        format.html { redirect_to galleries_path, notice: 'Nav was successfully created.' }
         format.json { render json: @nav, status: :created, location: @nav }
       else
         format.html { render action: "new" }
@@ -60,7 +38,7 @@ class NavsController < ApplicationController
 
     respond_to do |format|
       if @nav.update_attributes(params[:nav])
-        format.html { redirect_to @nav, notice: 'Nav was successfully updated.' }
+        format.html { redirect_to galleries_path, notice: 'Nav was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +54,7 @@ class NavsController < ApplicationController
     @nav.destroy
 
     respond_to do |format|
-      format.html { redirect_to navs_url }
+      format.html { redirect_to galleries_path }
       format.json { head :no_content }
     end
   end
