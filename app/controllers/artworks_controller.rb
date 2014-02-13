@@ -85,18 +85,25 @@ class ArtworksController < ApplicationController
   end
 
   def edit_multiple
-    @artworks = Artwork.find(params[:artwork_ids])
+    if params[:artwork_ids].nil?
+      respond_to do |format|
+        format.html { redirect_to artworks_url, notice: 'You must select at least one artwork.' }
+        format.json { head :no_content }
+      end
+    else
+      @artworks = Artwork.find(params[:artwork_ids])
+    end
   end
 
   def update_multiple
     @artworks = Artwork.find(params[:artwork_ids])
     @artworks.reject! do |artwork|
-      puts "***#{artwork}***"
       artwork.update_attributes(params[:artwork].reject { |k,v| v.blank? })
     end
     if @artworks.empty?
       redirect_to artworks_url
     else
+      @artwork = Artwork(params[:artwork])
       render "edit_multiple"
     end
   end

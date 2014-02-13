@@ -5,16 +5,21 @@
     <li>
       <%= hidden_field_tag "artwork_ids[]", artwork.id %>
       <%= artwork.title %>
+      <ul class="errors">
+        <% artwork.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
     </li>
   <% end %>
   </ul>
   <%= simple_fields_for :artwork do |f| %>
-        <%= f.input :year, 
+        <%= f.input :year,
           collection: 1990..Date.today.year, 
-          selected: Date.today.year %>
-        <%= f.input :category, 
+          selected: Date.today.year, include_blank: true %>
+        <%= f.input :category,
           collection: [ "Paintings", "Watercolors", "Drawings", "Prints"], 
-          selected: "Paintings" %>
+          selected: "Paintings", include_blank: true %>
         <%= f.input :size %>
         <%= f.input :medium %>
         <%= f.label :tag_list, "Keywords" %>
