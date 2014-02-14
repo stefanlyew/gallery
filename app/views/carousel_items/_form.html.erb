@@ -12,6 +12,8 @@
     <br />
     <%= f.input :name %>
     <%= f.input :caption %>
+    <%= f.input :gallery_id, collection: Gallery.all, include_blank: true, label: "Link to Gallery" %> 
+    <%# <%= f.input :location,:collection => @locations,:label_method => :location_name,:value_method => :id,:label => "Location" ,:include_blank => false %>
     </fieldset>  
  
   <div class="actions">

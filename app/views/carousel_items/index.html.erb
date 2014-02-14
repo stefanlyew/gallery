@@ -4,16 +4,18 @@
   <div class="carousel-inner">
     
     <% @carousel_items.each_with_index do |item,index| %>
-      <% if index==0 %>
-        <div class="item active">
-      <% else %>
-        <div class="item">
-      <% end %>
-      <%= image_tag item.asset %>
-      <div class="carousel-caption">
-        <p><%= item.caption %></p>
-      </div>
-    </div>
+        <% if index==0 %>
+          <div class="item active">
+        <% else %>
+          <div class="item">
+        <% end %>
+            <%= link_to (item.gallery ? gallery_path(item.gallery) : '#') do %>
+              <%= image_tag item.asset %>
+              <div class="carousel-caption">
+                <p><%= item.caption %></p>
+              </div>
+            <% end %>
+          </div>
     <% end %>
   </div><!-- /.carousel-inner -->
   <!--  Next and Previous controls below
