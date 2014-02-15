@@ -22,6 +22,7 @@ module ApplicationHelper
 		content_tag(:li, link_to(body, path), class: ('active' if current_page?(path)))
 	end
 
+
 	def profile_id
 		Profile.last.id
 	end

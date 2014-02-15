@@ -7,3 +7,5 @@ jQuery ->
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
   );
+  $(".sortable").click (event) ->
+    event.preventDefault()

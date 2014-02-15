@@ -44,10 +44,7 @@
         <% end %>
         <div class="nav-collapse">
           <ul class="nav">
-            <%# <% featured_galleries.each do |gallery| %>
-            <%#   <li><%= nav_entry gallery.title, gallery_path(gallery) %></li>
-            <%# <% end %>
-            <% featured_navs.each do |nav| %>
+           <% featured_navs.each do |nav| %>
               <li class="dropdown">
                 <a href="#" id="drop2" role="button" class="dropdown-toggle" data-toggle="dropdown"><%= nav.title %><b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop2">
@@ -84,7 +81,7 @@
     </div>
     <% unless admin_signed_in? %>
       <footer>
-        <p class="pull-right">&copy; Margaret Tsirantonakis <%= Time.now.year %> &nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <p class="offset2">&copy; Margaret Tsirantonakis <%= Time.now.year %> &nbsp;&nbsp;&nbsp;&nbsp; </p>
       </footer>  
     <% end %>
 </body>

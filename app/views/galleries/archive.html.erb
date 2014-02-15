@@ -1,33 +1,25 @@
-<div class="row tabbable">
-	<div class="span12 well pull-right">
-			<div class="tab-content">
-				<div id="blog" class="tab-pane active">
-					<h1>Gallery Archive</h1>
-
-			  <%= content_tag(:ul) do -%>
-		            <% @galleries.each do |gallery| %>
-
-                <%= link_to(gallery_path(gallery)) do %> 
-                <h2><%= gallery.title %> </h2>
-					    <p><%= gallery.description %></p>
-    		            <ul class="thumbnails">
-    		            <% gallery.artworks.first(5).each do |artwork| %>
-	    		            <li class="span2" id="artwork_<%= artwork.id %>">
-	    		            	<%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption) %>
-	    		            </li>
-    		            <% end %>
-
-						</ul>
-					    <div>
-					        <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span>					    </div> 
-					    <hr>
-
-    		            <% end %>
-				    <% end %>
-				<% end %>
-
+	<div class="span12 well archive">
+        <div class="gallery" id="blog"> 
+          <%= content_tag(:ul) do -%>
+            <% @galleries.each do |gallery| %>
+              <%= link_to(gallery_path(gallery)) do %> 
+              <div class="entry row">
+                <div class="pad-sides">
+                  <h3><%= gallery.title %> </h3>
+                  <p><i><%= gallery.description %></i></p>
+                  <ul class="thumbnails">
+                  <% gallery.artworks.first(5).each do |artwork| %>
+                    <li class="span2" id="artwork_<%= artwork.id %>">
+                      <%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption) %>
+                    </li>
+                  <% end %>
+                  </ul>
+                  <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span>
+                  </div>
+                  </div>
+                  <hr>
+                <% end %>
+              <% end %>
+          <% end %>
 	    		</div>
 			</div>
-		</div>
-	</div>
-</div>

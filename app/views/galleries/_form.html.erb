@@ -32,15 +32,9 @@
         <%= f.text_field :title %>
         <%= f.label :description %>
         <%= f.text_area :description, class: "smallertext" %>
-        <%= f.label :quote, "Text" %>
-        <%= f.text_area :quote, class: "smallertext" %>
-        <%= f.label :nav_id, "Navigation Category" %>
+       <%= f.label :nav_id, "Navigation Bar Category" %>
         <%= f.collection_select :nav_id, Nav.all, :id, :title, include_blank: true %>
-        <div class="well">                      
-          <%= f.label :featured, 'Featured On Navigation Bar?' %>
-          <%= f.check_box :featured %>
-        </div>  
-        <div class="well">                      
+       <div class="well">                      
           <%= f.label :archived, 'Put Gallery In Archive?' %>
           <%= f.check_box :archived %>
         </div>                            
