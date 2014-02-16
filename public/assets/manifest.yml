@@ -19,8 +19,8 @@ loader.gif: loader-952a6dab619528d917a859e08734fee8.gif
 loader/index.gif: loader-952a6dab619528d917a859e08734fee8.gif
 pattern.png: pattern-fb9c9a7bf756d102f6a668ec17eefefc.png
 pattern/index.png: pattern-fb9c9a7bf756d102f6a668ec17eefefc.png
-application.js: application-37f8c545c0f21f3cb1842c94efbe0bcd.js
-application/index.js: application-37f8c545c0f21f3cb1842c94efbe0bcd.js
+application.js: application-7d94828aeee723c81e22d9fd647dd97b.js
+application/index.js: application-7d94828aeee723c81e22d9fd647dd97b.js
 fileupload.js: fileupload-fdef621289c0dc1e4c6b788a7b03d6a7.js
 fileupload/index.js: fileupload-fdef621289c0dc1e4c6b788a7b03d6a7.js
 filtrify.js: filtrify-5091c28b73ee9ef35b8d976e5f4c0c24.js
