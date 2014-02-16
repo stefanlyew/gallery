@@ -16,7 +16,7 @@ jQuery ->
       slideshowDelay: 1500
       loop: true
 
-    instance = PhotoSwipe.attach(window.document.querySelectorAll(".thumbnails:not(.sortable) a"), options)
+    instance = PhotoSwipe.attach(window.document.querySelectorAll(".thumbnails.show:not(.sortable) a"), options)
     return
   ), false
   return
