@@ -15,10 +15,10 @@
         <%= f.input :title %>
         <%= f.input :year, 
           collection: 1990..Date.today.year, 
-          selected: Date.today.year %>
+          selected: @artwork.year ? @artwork.year : Date.today.year %>
         <%= f.input :category, 
           collection: [ "Paintings", "Watercolors", "Drawings", "Prints"], 
-          selected: "Paintings" %>
+          selected: @artwork.category ? @artwork.category : "Paintings" %>
         <%= f.input :size %>
         <%= f.input :medium %>
         <% if @artwork.galleries %>
