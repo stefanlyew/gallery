@@ -12,12 +12,13 @@
     <br />
     <%= f.input :name %>
     <%= f.input :caption %>
-    <%= f.input :gallery_id, collection: Gallery.all, include_blank: true, label: "Link to Gallery" %> 
+    <%= f.input :gallery_id, collection: Gallery.all, include_blank: true, label: "Link to Gallery" %>
     <%# <%= f.input :location,:collection => @locations,:label_method => :location_name,:value_method => :id,:label => "Location" ,:include_blank => false %>
-    </fieldset>  
- 
+    </fieldset>
+
   <div class="actions">
     <%= f.submit nil, class: 'btn btn-primary' %>
     <%= link_to "Back", galleries_path, class: 'btn' %>
+    <%= link_to 'Destroy Carousel Item', @carousel_item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
   </div>
 <% end %>

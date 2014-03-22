@@ -26,6 +26,6 @@ $(document).ready ->
   jQuery ->
     $(".sortable a").click (e) ->
       e.preventDefault()
-      return false
 
-
+    $("a.carousel-actions").click (e) ->
+      window.open(this.href);

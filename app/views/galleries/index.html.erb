@@ -20,7 +20,7 @@
         <h2>Navigation Bar Featured Items</h2>
         <%= link_to 'New Navigation Grouping Category', new_nav_path, class: 'btn' %>
         <h6>Drag And Drop To Reorder(will update on page refresh)</h6>
-        <ol class="sortable" data-update-url="<%= featuredsort_navs_url %>"> 
+        <ol class="sortable" data-update-url="<%= featuredsort_navs_url %>">
           <% featured_navs.each do |nav| %>
             <li id="nav_<%= nav.id %>"><%= nav.title %>
               <%= link_to 'Edit', edit_nav_path(nav) %>
@@ -53,16 +53,13 @@
         <h2>Homepage Carousel Slideshow Pictures (Details)</h2>
         <%= link_to "Add New Picture For Homepage", new_carousel_item_path, :class => 'btn btn-success' %>
         <h6>Drag And Drop To Reorder</h6>
-        <ul class="sortable thumbnails" data-update-url="<%= sort_carousel_items_url %>"> 
+        <ul class="sortable thumbnails" data-update-url="<%= sort_carousel_items_url %>">
           <% @carousel_items.each do |item| %>
             <li id="carousel_item_<%= item.id %>">
               <div class="thumbnail">
                 <%= image_tag item.asset(:thumbnail) %>
                 <div class="caption">
-                  <%= link_to 'Edit', edit_carousel_item_path(item) %>
-                  <div class="pull-right">
-                    <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-                  </div>
+                  <%= link_to 'Edit/Remove Page', edit_carousel_item_path(item), class: 'carousel-actions' %>
                 </div>
               </div>
             </li>
@@ -77,7 +74,7 @@
           <%= link_to "<i class=\"icon-plus icon-remove text-right\"></i>New Gallery".html_safe, new_gallery_path, :class => 'btn btn-success' %>
         </div>
         <div class="well">
-          <table class="table"> 
+          <table class="table">
             <thead>
               <tr>
                 <th><%= sortable "title" %></th>

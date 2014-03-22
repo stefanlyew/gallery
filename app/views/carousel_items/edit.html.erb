@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @artwork %> |
-<%= link_to 'Back', artworks_path %>
+<%= link_to 'Destroy', @carousel_item, method: :delete, data: { confirm: 'Are you sure?' } %>
+
