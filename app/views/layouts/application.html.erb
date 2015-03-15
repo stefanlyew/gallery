@@ -54,15 +54,17 @@
                 </ul>
               </li>
             <% end %>
-	
-	          <li><%= nav_entry "Profile", profile_path(profile_id) %></li>
-	          <li><%= nav_entry "Archive", archive_galleries_path %></li>
+
+            <% if profile_id %>
+              <li><%= nav_entry "Profile", profile_path(profile_id) %></li>
+            <% end %>
+            <li><%= nav_entry "Archive", archive_galleries_path %></li>
             <% if admin_signed_in? %>
               <li><%= nav_entry "My Catalog", artworks_path %></li>
               <li><%= nav_entry "My Galleries", galleries_path %></li>
               <li><%= link_to "Sign Out", destroy_admin_session_path, method: :delete %></li>
             <% end %>
-  
+
           </ul>
         </div>
       </div>
@@ -82,7 +84,7 @@
     <% unless admin_signed_in? %>
       <footer>
         <p class="offset2">&copy; Margaret Tsirantonakis <%= Time.now.year %> &nbsp;&nbsp;&nbsp;&nbsp; </p>
-      </footer>  
+      </footer>
     <% end %>
 </body>
 </html>
