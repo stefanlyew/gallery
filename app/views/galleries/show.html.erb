@@ -6,12 +6,12 @@
   <h4>Drag And Drop To Reorder Art Pieces</h4>
   <%= link_to 'Back to My Galleries', galleries_path %> |
   <%= link_to 'Edit this Gallery', edit_gallery_path(@gallery) %>
-<% end %>      
+<% end %>
             <br/>
             <br/>
 <div class="gallery">
   <h3><%= @gallery.title %></h3>
-  <h4><i><%= @gallery.description %></i></h4>
+  <h4><%= @gallery.description %></h4>
   <br/>
   <br/>
   <!-- <h2 class="page-title"><%= @gallery.title %></h2> -->
@@ -27,6 +27,6 @@
       </li>
     <% end %>
   <% end -%>
-</div> 
+</div>
 
 </div>

@@ -1,32 +1,29 @@
   <br/>
-	<br/>
-	<div class="row">
-		<div class="span12">
-			<h4 class="profile"><%= markdown @profile.quote %></h4>
-		</div>
-	</div>
-	<br/>
-	<div class="row">
-		<div class="span12">
+  <br/>
+  <div class="row">
+    <div class="span12">
+      <h4 class="profile"><%= markdown @profile.quote %></h4>
+    </div>
+  </div>
+  <br/>
+  <div class="row">
+    <div class="span12">
         <% if @profile.photo? %>
           <%= image_tag @profile.photo %>
         <% else %>
          <img src="http://placehold.it/1200x300" alt="" />
         <% end %>
-		</div>
-	</div>
-	<br/>
-	<div class="row">
-    <div class="span4 offset1">
-      <p><%= markdown @profile.statement %></p>
     </div>
+  </div>
+  <br/>
+  <div class="row">
     <div class="span4 offset2">
       <div id="accordion">
-        <h4 class="profile">Upcoming Exhibitions & News</h4>
+        <h4 class="profile">News</h4>
         <div>
           <p><%= markdown @profile.news %></p>
         </div>
-        <h4 class="profile">Recent Exhibits</h4>
+        <h4 class="profile">Exhibitions</h4>
         <div>
           <p><%= markdown @profile.recent_exhibits %> </p>
         </div>
@@ -42,6 +39,10 @@
       <div><%= link_to "Resume (PDF)", @profile.resume.url,
         :target => "_blank", class: "profile" %>
       </div>
+    </div>
+
+    <div class="span4 offset1">
+      <p><%= markdown @profile.statement %></p>
     </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
-	<div class="span12 well archive">
-        <div class="gallery" id="blog"> 
+  <div class="span12 archive">
+        <div class="gallery" id="blog">
           <%= content_tag(:ul) do -%>
             <% @galleries.each do |gallery| %>
-              <%= link_to(gallery_path(gallery)) do %> 
+              <%= link_to(gallery_path(gallery)) do %>
               <div class="entry row">
                 <div class="pad-sides">
                   <h3><%= gallery.title %> </h3>
@@ -14,12 +14,11 @@
                     </li>
                   <% end %>
                   </ul>
-                  <span class="badge badge-success">Posted <%= gallery.created_at.to_s(:post_time) %></span>
                   </div>
                   </div>
                   <hr>
                 <% end %>
               <% end %>
           <% end %>
-	    		</div>
-			</div>
+          </div>
+      </div>

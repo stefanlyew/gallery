@@ -3,6 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #accordion h4:hover { /* change to blue on mouseover */
-       color: #000;
+  color: #000;
 }
 
+.ui-accordion-content {
+  overflow: scroll;
+}
