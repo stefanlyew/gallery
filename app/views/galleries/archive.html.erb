@@ -10,7 +10,7 @@
                   <ul class="thumbnails">
                   <% gallery.artworks.first(5).each do |artwork| %>
                     <li class="span2" id="artwork_<%= artwork.id %>">
-                      <%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics", alt: artwork.caption) %>
+                      <%= image_tag(artwork.asset(:thumbnail), class: "thumbnail pics archive-thumbs", alt: artwork.caption) %>
                     </li>
                   <% end %>
                   </ul>
