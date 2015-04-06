@@ -41,7 +41,12 @@ class GalleriesController < ApplicationController
   def new
     @gallery = Gallery.new
     @current_artworks = @gallery.artworks
-    artwork_ids = Artwork.all.pluck(:id) - @current_artworks.pluck(:id)
+    artworks = Artwork.all
+    if artworks.present? && @current_artworks.present?
+      artwork_ids = artworks.pluck(:id) - @current_artworks.pluck(:id)
+    else
+      artwork_ids = []
+    end
     @artworks = Artwork.order("created_at").find(artwork_ids)
 
     respond_to do |format|
@@ -54,8 +59,12 @@ class GalleriesController < ApplicationController
   def edit
     @gallery = Gallery.find(params[:id])
     @current_artworks = @gallery.artworks
-
-    artwork_ids = Artwork.all.pluck(:id) - @current_artworks.pluck(:id)
+    artworks = Artwork.all
+    if artworks.present? && @current_artworks.present?
+      artwork_ids = artworks.pluck(:id) - @current_artworks.pluck(:id)
+    else
+      artwork_ids = []
+    end
     @artworks = Artwork.order("created_at").find(artwork_ids)
   end
 
