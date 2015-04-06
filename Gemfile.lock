@@ -101,11 +101,11 @@ GEM
     kgio (2.8.1)
     launchy (2.3.0)
       addressable (~> 2.3)
-    less (2.4.0)
-      commonjs (~> 0.2.7)
-    less-rails (2.4.2)
+    less (2.3.3)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
       actionpack (>= 3.1)
-      less (~> 2.4.0)
+      less (~> 2.3.1)
     libv8 (3.16.14.3)
     log_buddy (0.7.0)
     mail (2.5.4)
@@ -240,7 +240,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails (~> 2.3.0)
   launchy (~> 2.3.0)
-  less-rails
+  less-rails (~> 2.3.3)
   log_buddy
   paperclip
   pg
