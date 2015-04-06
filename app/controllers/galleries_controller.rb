@@ -41,7 +41,7 @@ class GalleriesController < ApplicationController
   def new
     @gallery = Gallery.new
     @current_artworks = @gallery.artworks
-    artworks = Artwork.all
+    artworks = Artwork.order("created_at")
     if artworks.present? && @current_artworks.present?
       artwork_ids = artworks.pluck(:id) - @current_artworks.pluck(:id)
     else
@@ -60,7 +60,7 @@ class GalleriesController < ApplicationController
   def edit
     @gallery = Gallery.find(params[:id])
     @current_artworks = @gallery.artworks
-    artworks = Artwork.all
+    artworks = Artwork.order("created_at")
     if artworks.present? && @current_artworks.present?
       artwork_ids = artworks.pluck(:id) - @current_artworks.pluck(:id)
     else
