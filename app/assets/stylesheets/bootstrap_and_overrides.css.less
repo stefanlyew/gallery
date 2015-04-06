@@ -116,6 +116,11 @@ body{
   -moz-border-radius: 0px;
   border-radius: 0px;
 }
+
+.thumbnail.form {
+  height: 210px;
+}
+
 .thumbnail img {
   opacity: .75;
 }
@@ -127,12 +132,9 @@ body{
   width: 130px;
 }
 
-.thumbnail .caption {
-  white-space: nowrap;
+.thumbnail .caption p {
   overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  -moz-binding: url('assets/xml/ellipsis.xml#ellipsis');
+  height 57px;
 }
 
 .gallery h4 {
@@ -269,7 +271,11 @@ textarea {
   .navbar .nav > li > a {
     padding-left: 25px;
   }
+  .nav-collapse .dropdown-menu a {
+    color: #fff;
+  }
 }
+
 
 ul.ui-autocomplete {
   position: absolute;
@@ -297,4 +303,8 @@ ul.ui-autocomplete {
 
 .archive h3 {
   margin: 0;
+}
+
+.gallery .description a {
+  text-decoration: underline;
 }
