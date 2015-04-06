@@ -23,8 +23,8 @@
     <% end %>
     <div class="row">
       <div class="span3 fixme">
-      
-        <%= link_to 'Back To Galleries', galleries_path %> | 
+
+        <%= link_to 'Back To Galleries', galleries_path %> |
         <%= link_to 'Preview This Gallery', @gallery %>
         </br>
         </br>
@@ -34,20 +34,36 @@
         <%= f.text_area :description, class: "smallertext" %>
        <%= f.label :nav_id, "Navigation Bar Category" %>
         <%= f.collection_select :nav_id, Nav.all, :id, :title, include_blank: true %>
-       <div class="well">                      
+       <div class="well">
           <%= f.label :archived, 'Put Gallery In Archive?' %>
           <%= f.check_box :archived %>
-        </div>                            
+        </div>
         <%= f.submit nil, class: 'btn btn-success' %>
       </div>
-      <div class="span8 pull-right">           
+      <div class="span8 pull-right">
           <div class="well" id=" filters">
             <p>Filter by:</p><div id="placeHolder"></div>
           </div>
         <ul class="thumbnails" id="filtrify">
+          <% @current_artworks.each do |artwork| %>
+            <%= tag(:li,
+              class: "span2",
+              data: { :'category' => artwork.category,
+                      :'keyword' => artwork.tag_list,
+                      :'medium' => artwork.medium,
+                      :'year' => artwork.year }
+                      ) -%>
+            <div class="thumbnail form">
+              <%= link_to image_tag(artwork.asset(:thumbnail)), artwork %>
+              <div class="caption">
+                <p><%= artwork.title -%></p>
+                <%= check_box_tag :artwork_ids, artwork.id, @current_artworks.include?(artwork), name: 'gallery[artwork_ids][]' %>
+              </div>
+            </div>
+          <% end %>
           <% @artworks.each do |artwork| %>
-            <%= tag(:li, 
-              class: "span2", 
+            <%= tag(:li,
+              class: "span2",
               data: { :'category' => artwork.category,
                       :'keyword' => artwork.tag_list,
                       :'medium' => artwork.medium,

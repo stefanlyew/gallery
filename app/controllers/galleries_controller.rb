@@ -1,8 +1,8 @@
 class GalleriesController < ApplicationController
-  before_filter :authenticate_admin!, :except => [:show, :archive] 
+  before_filter :authenticate_admin!, :except => [:show, :archive]
   # GET /galleries
   # GET /galleries.json
-  def index    
+  def index
     @carousel_items = CarouselItem.order("position").all #named
     @profile = Profile.last
     @galleries = Gallery.order(sort_column + " " + sort_direction).all
@@ -17,7 +17,7 @@ class GalleriesController < ApplicationController
 
   def archive
     @galleries = Gallery.archived.all
-    
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @galleries }
@@ -40,8 +40,9 @@ class GalleriesController < ApplicationController
   # GET /galleries/new.json
   def new
     @gallery = Gallery.new
-    @artworks = Artwork.all
     @current_artworks = @gallery.artworks
+    artwork_ids = Artwork.all.pluck(:id) - @current_artworks.pluck(:id)
+    @artworks = Artwork.order("created_at").find(artwork_ids)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -52,14 +53,16 @@ class GalleriesController < ApplicationController
   # GET /galleries/1/edit
   def edit
     @gallery = Gallery.find(params[:id])
-    @artworks = Artwork.all
     @current_artworks = @gallery.artworks
+
+    artwork_ids = Artwork.all.pluck(:id) - @current_artworks.pluck(:id)
+    @artworks = Artwork.order("created_at").find(artwork_ids)
   end
 
   # POST /galleries
   # POST /galleries.json
   def create
-    params[:gallery][:artwork_ids] ||= [] 
+    params[:gallery][:artwork_ids] ||= []
     @gallery = Gallery.new(params[:gallery])
 
     respond_to do |format|
@@ -76,7 +79,7 @@ class GalleriesController < ApplicationController
   # PUT /galleries/1
   # PUT /galleries/1.json
   def update
-    params[:gallery][:artwork_ids] ||= [] 
+    params[:gallery][:artwork_ids] ||= []
     @gallery = Gallery.find(params[:id])
 
     respond_to do |format|
@@ -130,7 +133,7 @@ private
   def sort_column
     Gallery.column_names.include?(params[:sort]) ? params[:sort] : "title"
   end
-  
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
