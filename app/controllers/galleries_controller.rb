@@ -48,7 +48,7 @@ class GalleriesController < ApplicationController
       artwork_ids = []
     end
     @artworks = Artwork.order("created_at").find(artwork_ids)
-    @artworks = Artwork.all.order('created_at') if @artworks.blank?
+    @artworks = Artwork.order('created_at').all if @artworks.blank?
 
     respond_to do |format|
       format.html # new.html.erb
@@ -67,7 +67,7 @@ class GalleriesController < ApplicationController
       artwork_ids = []
     end
     @artworks = Artwork.order("created_at").find(artwork_ids)
-    @artworks = Artwork.all.order('created_at') if @artworks.blank?
+    @artworks = Artwork.order('created_at').all if @artworks.blank?
   end
 
   # POST /galleries
